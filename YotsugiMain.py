@@ -739,6 +739,33 @@ async def modulefn(ctx):
 ### MODULES ###
 
 
+@client.command(pass_context = True, aliases=['ser'])
+async def server(ctx):
+    embed = discord.Embed(color = embed_color)
+    embed.add_field(name="Owner:", value=ctx.message.server.owner, inline=True)
+    embed.add_field(name="AFK Channel:", value=ctx.message.server.afk_channel, inline=True)
+    embed.add_field(name="Server Region:", value=ctx.message.server.region, inline=True)
+    embed.add_field(name="Features:", value=ctx.message.server.features, inline=True)
+    embed.add_field(name="Verification Level:", value=ctx.message.server.verification_level, inline=True)
+    embed.add_field(name="Member Count:", value=ctx.message.server.member_count, inline=True)
+    embed.add_field(name="Creation:", value=ctx.message.server.created_at, inline=True)
+    await client.say(embed = embed)
+    print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
+
+
+@client.command(pass_context = True, aliases=['userinfo'])
+async def user(ctx, *, member: discord.Member):
+    embed = discord.Embed(color = embed_color)
+    embed.set_thumbnail(url = member.avatar_url)
+    embed.add_field(name="User ID:", value=member.id, inline=True)
+    embed.add_field(name="User Name:", value=member, inline=True)
+    embed.add_field(name="Is Bot?:", value=member.bot, inline=True)
+    embed.add_field(name="Join Date:", value=member.created_at, inline=True)
+    embed.add_field(name="Nickname:", value=member.display_name, inline=True)
+    await client.say(embed = embed)
+    print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
+
+
 
 '''---------------------------------------------------------------------'''
 
