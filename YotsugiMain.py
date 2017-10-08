@@ -325,7 +325,7 @@ async def setrole(ctx, user: discord.Member, *, role):
 @client.command(pass_context = True, no_pm = True)
 async def warn(ctx, member : discord.Member, *, message):
         if ctx.message.author.server_permissions.kick_members:
-                embed = discord.Embed(description = "You've been warned for: **" + message + "**\n Responsible Moderator: **" + ctx.message.author.mention + "**\nServer: **" + ctx.message.server.name + "**", color = 0xFF0000)
+                embed = discord.Embed(description = "You've been warned for: **" + message + "**\nResponsible Moderator: **" + ctx.message.author.mention + "**\nServer: **" + ctx.message.server.name + "**", color = 0xFF0000)
                 return await client.send_message(member, embed = embed)
         else:
                 embed = discord.Embed(description = ":x: Insufficient Permissions", color = 0xFF0000)
