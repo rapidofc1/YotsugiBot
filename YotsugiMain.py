@@ -208,8 +208,9 @@ async def eightball(*choices):
 
 @client.command(pass_context = True)
 async def now(ctx):
-    date = datetime.datetime.now().strftime("%A, %d.%m.%Y, **%H:%M**") 
-    embed = discord.Embed(description = ctx.message.author.mention + ", now is: " + date, color = embed_color)
+    date = datetime.datetime.now().strftime("**Date: **%A, %B %d, %Y\n**Time: **%I:%M %p")
+    embed = discord.Embed(color = embed_color)
+    embed.add_field(name="Bot's System Date & Time", value=date, inline=False)
     await client.say(embed=embed)
 
 
