@@ -1552,7 +1552,7 @@ async def profile(ctx, *, user: str):
 ###### EXP AND DATABASE STUFF ######
 
 
-@client.command(pass_context = True)
+@client.command(pass_context = True, aliases=['updatewindows'])
 async def updatewin(ctx):
     updatefile = "YotsugiBot Installer.exe"
     if ctx.message.author.id != owner:
@@ -1564,8 +1564,8 @@ async def updatewin(ctx):
         os.startfile(updatefile)
 
 
-@client.command(pass_context = True)
-async def updatelinux(ctx):
+@client.command(pass_context = True, aliases=['updatelinux'])
+async def updatelin(ctx):
     updatefile = "linuxUPDATE.sh"
     if ctx.message.author.id != owner:
         embed = discord.Embed(description = "You're not the owner!", color = 0xFF0000)
