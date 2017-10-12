@@ -5,10 +5,11 @@ echo ""
 echo ""
 
 
-choice=1
+choice=2
 		echo "1. Download Yotsugi"
+		echo "2. Run Yotsugi"
 	
-while [ $choice -eq 1 ]; do
+while [ $choice -eq 2 ]; do
 read choice
 if [ $choice -eq 1 ] ; then
 
@@ -18,6 +19,15 @@ if [ $choice -eq 1 ] ; then
 		echo ""
 		echo "Downloaded!"
 		
+else
+
+		if [ $choice -eq 2 ] ; then
+		
+			echo ""
+			echo "Starting the bot..."
+			echo ""
+			bash linuxRUN.sh
+		fi
 	fi
 done
 exit 0
