@@ -1,4 +1,3 @@
-
 #Do NOT edit past this point, unless you know what you're doing!#
 #---------------------------------------------------------------------------------------------------------------------#
 import discord
@@ -16,6 +15,7 @@ from credentials import BotToken
 from credentials import Owners as owner
 from credentials import EmbedColor as embed_color
 from credentials import Prefix as prefix
+from credentials import LoggingChannel as loggingchannel
 ###
 bot_version = 'v0.5.5'
 bot_author = 'Kyousei#8357'
