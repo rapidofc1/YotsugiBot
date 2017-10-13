@@ -770,7 +770,25 @@ async def user(ctx, *, member: discord.Member):
 
 '''---------------------------------------------------------------------'''
 
+@client.command(pass_context = True, aliases=['slotroll'])
+async def rollslots(ctx):
+        """ Roll the slot machine """
+        emojis = "🍎🍊🍐🍋🍉🍇🍓🍒"
+        a = random.choice(emojis)
+        b = random.choice(emojis)
+        c = random.choice(emojis)
 
+        embed = discord.Embed(description = "Congratulations, You won!")
+        if (a == b == c):
+            message = 'and won! 🎉'
+        elif (a == b) or (a == c) or (b == c):
+            message = 'and almost won (2/3)'
+        else:
+            message = 'and lost...'
+
+
+        embed = discord.Embed(description = f"**{ctx.message.author.mention}**, you rolled the slots...\n**[ {a} ][ {b} ][ {c} ]**\n{message}", color = embed_color)
+        await client.say(embed = embed)
 	
 
 @client.command(pass_context = True, aliases=['updatelinux'])
