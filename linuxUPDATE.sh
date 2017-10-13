@@ -6,7 +6,7 @@ echo ""
 
 
 choice=2
-		echo "1. Download/Update Yotsugi"
+		echo "1. Download Yotsugi"
 		echo "2. Run Yotsugi"
 	
 while [ $choice -eq 2 ]; do
