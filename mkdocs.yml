@@ -1,0 +1,16 @@
+site_name: Yotsugi Bot
+repo_url: https://github.com/Kyousei/YotsugiBot
+pages:
+- Home: README.md
+- About: README.md
+- Guides:
+    - Windows Guide: README.md
+    - Linux Guide: README.md
+- Commands:
+    - Readme: README.md
+    - Commands List: README.md
+- Features Explained:
+    - JSON Explanations: README.md
+- ❤ Donate ❤: README.md
+
+theme: readthedocs
