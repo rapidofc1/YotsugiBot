@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-
-<title>Yotsugi Bot Docs</title>
-
-<h>Welcome to <b>Yotsugi Bot</b> documentation page!</h>
+# Welcome to <b>Yotsugi Bot</b> documentation page!
 
 
 
