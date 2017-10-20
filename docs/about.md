@@ -27,3 +27,8 @@
   
 ## Who made Yotsugi?
   Yotsugi was made by Kyousei#8357.
+  
+  
+  
+## Is there a website?
+  Yes, but it's not an official one, click here to visit it.
