@@ -769,4 +769,16 @@ async def user(ctx, *, member: discord.Member):
 
 '''---------------------------------------------------------------------'''
 
+@client.command(pass_context = True, aliases=['updatelinux'])
+async def updatelin(ctx):
+    updatefile = "linuxUPDATE.sh"
+    if ctx.message.author.id != owner:
+        embed = discord.Embed(description = "You're not the owner!", color = 0xFF0000)
+        await client.say(embed = embed)
+    else:
+        embed = discord.Embed(description = "Updating...", color = embed_color)
+        await client.say(embed = embed)
+        os.startfile(updatefile)
+
+
 client.run(BotToken)
