@@ -7,7 +7,7 @@ Here's a list of all commands for Yotsugi.
 
 ## Administration/Moderation Commands
 
-```
+```css
 	;b/;ban						|					Description: Bans the user from the server.					|					Usage: ;b @User						|					Permissions: Ban Members Permission (Both User and bot)
 
 	;k/;kick					|					Description: Kicks the user from the server.				|					Usage: ;k @User						|					Permissions: Kick Members Permissions (Both User and bot)
@@ -24,7 +24,7 @@ Here's a list of all commands for Yotsugi.
 
 
 ## Fun
-```
+```css
 	;roll						|					Description: Rolls the dice in NdN format.					|					Usage: ;roll 5d50					|					Permissions: -
 
 	;eightball/;8ball			|					Description: 8ball's your line.								|					Usage: ;8ball yah or nah?			|					Permissions: -
@@ -40,7 +40,7 @@ Here's a list of all commands for Yotsugi.
 
 
 ## Info
-```
+```css
 	;h							|					Description: Shows help links or help about a command.		|					Usage: ;h or ;h ;banlist			|					Permissions: -
 
 	;servers					|					Description: Lists all servers the bot is in.				|					Usage: ;servers						|					Permissions: -
@@ -64,7 +64,7 @@ Here's a list of all commands for Yotsugi.
 
 
 ## Self Hosters Only
-```
+```css
 	;update 					|					Description: Updates your bot (FOR LINUX ONLY).				|					Usage: ;update						|					Permissions: -
 
 	;send						|					Description: Sends a DM to the specified user.				|					Usage: ;send @User Hi				|					Permissions: -
@@ -76,7 +76,7 @@ Here's a list of all commands for Yotsugi.
 
 
 ## Music
-```
+```css
 	**Please read the music guide**
 	**It's located on the menu at the left hand side of the website**
 ```
