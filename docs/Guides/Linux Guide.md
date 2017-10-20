@@ -15,7 +15,8 @@ Incase you dont need to do Step 2, first thing you need to do is open the Consol
 Open the command console via `CTRL + ALT + T` or open the Dash by clicking the Ubuntu icon in the upper-left, type "`terminal`", and select the Terminal application.
 After that, copy and paste or type:
 
-```python3 -m pip install discord.py
+```
+python3 -m pip install discord.py
 python3 -m pip install discord.py
 python3 -m pip install colorama
 python3 -m pip install requests
