@@ -8,18 +8,18 @@ Here's a list of all commands for Yotsugi.
 ## Administration/Moderation Commands
 
 ```
-	;b/;ban						|					Description: Bans the user from the server.					|					Usage: ;b @User						|					Permissions: **Ban Members Permission** (Both User and bot)
+	;b/;ban						|					Description: Bans the user from the server.					|					Usage: ;b @User						|					Permissions: Ban Members Permission (Both User and bot)
 
-	;k/;kick					|					Description: Kicks the user from the server.				|					Usage: ;k @User						|					Permissions: **Kick Members Permissions** (Both User and bot)
+	;k/;kick					|					Description: Kicks the user from the server.				|					Usage: ;k @User						|					Permissions: Kick Members Permissions (Both User and bot)
 
-	;mute						|					Description: Mutes the user.								|					Usage: ;mute @User					|					Permissions: **Manage Channels (Bot) & Mute Members(Both User and bot) Permissions**
+	;mute						|					Description: Mutes the user.								|					Usage: ;mute @User					|					Permissions: Manage Channels (Bot) & Mute Members(Both User and bot) Permissions
 
-	;unmute						|					Description: Unmutes the user from that Channel.			|					Usage: ;unmute @User				|					Permissions: **Manage Channels (Bot) & Mute Members(Both User and bot) Permissions**
-	;clear/;prune/;purge  		|					Description: Deletes x amount of messages.					|					Usage: ;prune 50					|					Permissions: **Manage Messages Permission** (Bth User and bot)
+	;unmute						|					Description: Unmutes the user from that Channel.			|					Usage: ;unmute @User				|					Permissions: Manage Channels (Bot) & Mute Members(Both User and bot) Permissions
+	;clear/;prune/;purge  		|					Description: Deletes x amount of messages.					|					Usage: ;prune 50					|					Permissions: Manage Messages Permission (Bth User and bot)
 	;banlist					|					Description: Shows all banned users.						|					Usage: ;banlist						|					Permissions: -
-	;setrl/;setrole				|					Description: Gives the user a role.							|					Usage: ;setrl @User Role			|					Permissions: **Manage Roles Permission** (Both user and bot)
-	;remrl/;removerole			|					Description: Removes the role from a user.					|					Usage: ;remrl @User Role			|					Permisisons: **Manage Roles Permission** (Both User and bot)
-	;warn						|					Description: Warns a user.									|					Usage: ;warn @Puru#0391 Rude		|					Permissions: **Kick Members Permission** (Both User and bot)
+	;setrl/;setrole				|					Description: Gives the user a role.							|					Usage: ;setrl @User Role			|					Permissions: Manage Roles Permission (Both user and bot)
+	;remrl/;removerole			|					Description: Removes the role from a user.					|					Usage: ;remrl @User Role			|					Permisisons: Manage Roles Permission (Both User and bot)
+	;warn						|					Description: Warns a user.									|					Usage: ;warn @Puru#0391 Rude		|					Permissions: Kick Members Permission (Both User and bot)
 ```
 
 
@@ -31,7 +31,7 @@ Here's a list of all commands for Yotsugi.
 
 	;ud							|					Description: Searches the meaning of the word on Urban Dict	|					Usage: ;ud lol						|					Permissions: -
 
-	;flip						|					Description: Flips the coin.								|					Usage: ;flip						|					Permissions: **Attach Files** (Bot)
+	;flip						|					Description: Flips the coin.								|					Usage: ;flip						|					Permissions: Attach Files (Bot)
 
 	;safebooru					|					Description: Searches for images by that tag.				|					Usage: ;safebooru Cute				|					Permissions: -
 
