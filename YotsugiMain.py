@@ -17,7 +17,7 @@ from credentials import EmbedColor as embed_color
 from credentials import Prefix as prefix
 from credentials import LoggingChannel as loggingchannel
 ###
-bot_version = 'v0.5.5'
+bot_version = 'v0.6'
 bot_author = 'Kyousei#8357'
 bot_author_id = '145878866429345792'
 ###
@@ -768,10 +768,5 @@ async def user(ctx, *, member: discord.Member):
 
 
 '''---------------------------------------------------------------------'''
-
-
-
-
-
 
 client.run(BotToken)
