@@ -1,0 +1,13 @@
+site_name: YotsugiBot
+repo_url: https://github.com/Kyousei/YotsugiBot
+pages:
+- Home: index.md
+- About: about.md
+- Guides:
+    - Windows Guide: Guides/Windows Guide.md
+    - Linux Guide: Guides/Linux Guide.md
+- Explanation Of Features:
+    - Music Guide: Guides/Music Guide.md
+- Donate ❤❤❤: donate.md
+
+theme: readthedocs
