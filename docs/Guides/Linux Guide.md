@@ -17,7 +17,6 @@ After that, copy and paste or type:
 
 ```
 python3 -m pip install discord.py
-python3 -m pip install discord.py
 python3 -m pip install colorama
 python3 -m pip install requests
 ```
@@ -33,6 +32,8 @@ Use `cd YotsugiBot` to move into the newly created folder, then type `nano crede
 `Owner` requires your unique User ID, the Gif below shows how to get it.
 `Prefix` defines the variable you are going to use in front of the commands in order for the bot to respond.
 `EmbedColor` will show a colored border around embed messages of the bot. To change it, put `0xHEX`, `HEX` being the HEX code of the color you want to use.
+`LoggingChannel` is the channel where the bot will output the logging. Yotsugi currently has: `User Banned, User Unbanned, Message Deleted, Message Edited, Role Created, Channel Created, Channel Deleted, Channel Updated, Role Deleted, User Kicked`
+
 
 Press `CTRL + O` and enter to save afterwards, and `CTRL + X` to close it. 
 
@@ -42,6 +43,6 @@ In the new session type `python3 YotsugiMain.py` to start the bot. It should sho
 
 ## Step 6
 Inviter the bot to your server with an invite link
-https://discordapp.com/oauth2/authorize?client_id=ID_HERE&scope=bot&permissions=0
+https://discordapp.com/oauth2/authorize?client_id=`ID_HERE`&scope=bot&permissions=0
 
 Replace `ID_HERE` with your Bots ID. (You can find it under the Discord Developers Section above the Token.) 
