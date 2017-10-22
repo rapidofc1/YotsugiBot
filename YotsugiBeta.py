@@ -1121,14 +1121,12 @@ hentai_images = [
     'https://cdn.discordapp.com/attachments/331827935030018048/362025070526201867/FB_IMG_1506090890627.jpg'
     ]
 
+
 def read_from_db(sq):
-    print(sq)
     c.execute(sq)
     conn.commit()
-    print(sq)
     global data
     data = c.fetchall()
-    print("Sql query sent off!")
 
 @client.command(pass_context = True)
 async def hentai(ctx):
@@ -1143,7 +1141,6 @@ async def hentai(ctx):
         embed.set_image(url = random.choice(hentai_images))
         await client.say(embed = embed)
         print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
-
 
 ############ FIX THIS ############
 def data_entry(sqlstr):
