@@ -378,7 +378,9 @@ async def flipcoin(ctx):
 
 @client.command()
 async def h(command = None):
-    embed = discord.Embed(description = "**Hosting Guides: https://github.com/Kyousei/YotsugiBot/wiki** \n**Commands List: https://goo.gl/w6Aoag**", color = embed_color)
+    embed = discord.Embed(color = embed_color)
+    embed.add_field(name="Hosting Guides", value="**https://yotsugibot.readthedocs.io/en/latest/**", inline=True)
+    embed.add_field(name="Commands List", value="**[Click Here](https://yotsugibot.readthedocs.io/en/latest/Commands%20List)**", inline=True)
     if not command:
             await client.say(embed = embed)
             return
