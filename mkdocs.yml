@@ -9,7 +9,7 @@ pages:
 - Explanation Of Features:
     - Commands List: Commands List.md
     - Music Guide: Guides/Music Guide.md
-    - Contribution Guide: Contribution.md
+    - Contribution Guide: Contributing.md
 - Donate ❤❤❤: donate.md
 
 theme: readthedocs
