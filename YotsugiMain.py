@@ -38,7 +38,8 @@ async def on_ready():
     elif not os.path.isfile("data/images/coin/heads.png"):
         print(Back.RED + "heads.png not found! Please add it then try again!")
         await client.logout()
-    elif not os.path.isfile("data/images/cointails.png"):
+    elif not os.path.isfile("data/images/coin/tails.png"):
+        await client.logout()
         print(Back.RED + "tails.png not found! Please add it then try again!")
         await client.logout()
     time.sleep(2)
@@ -380,7 +381,7 @@ async def flipcoin(ctx):
 async def h(command = None):
     embed = discord.Embed(color = embed_color)
     embed.add_field(name="Hosting Guides", value="[Click Here](https://yotsugibot.readthedocs.io/en/latest/)", inline=False)
-    embed.add_field(name="Commands List", value="[Click Here](https://yotsugibot.readthedocs.io/en/latest/Commands%20List)", inline=False)
+    embed.add_field(name="Commands List", value="[Click Here](https://yotsugibot.readthedocs.io/en/latest/Commands%20List)", inline=True)
     if not command:
             await client.say(embed = embed)
             return
@@ -770,5 +771,17 @@ async def user(ctx, *, member: discord.Member):
 
 
 '''---------------------------------------------------------------------'''
+
+@client.command(pass_context = True, aliases=['updatelinux'])
+async def updatelin(ctx):
+    updatefile = "linuxUPDATE.sh"
+    if ctx.message.author.id != owner:
+        embed = discord.Embed(description = "You're not the owner!", color = 0xFF0000)
+        await client.say(embed = embed)
+    else:
+        embed = discord.Embed(description = "Updating...", color = embed_color)
+        await client.say(embed = embed)
+        os.startfile(updatefile)
+
 
 client.run(BotToken)
