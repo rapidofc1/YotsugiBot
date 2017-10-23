@@ -17,7 +17,7 @@ from credentials import EmbedColor as embed_color
 from credentials import Prefix as prefix
 from credentials import LoggingChannel as loggingchannel
 ###
-bot_version = 'v0.6'
+bot_version = 'v0.6.1'
 bot_author = 'Kyousei#8357'
 bot_author_id = '145878866429345792'
 ###
@@ -39,6 +39,7 @@ async def on_ready():
         print(Back.RED + "heads.png not found! Please add it then try again!")
         await client.logout()
     elif not os.path.isfile("data/images/coin/tails.png"):
+        await client.logout()
         print(Back.RED + "tails.png not found! Please add it then try again!")
         await client.logout()
     time.sleep(2)
