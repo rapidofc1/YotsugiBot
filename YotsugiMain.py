@@ -35,10 +35,10 @@ async def on_ready():
     if not os.path.isfile("credentials.py"):
         print(Back.RED + "credentials.py not found! Please add it then try again!")
         await client.logout()
-    elif not os.path.isfile("heads.png"):
+    elif not os.path.isfile("data/images/coin/heads.png"):
         print(Back.RED + "heads.png not found! Please add it then try again!")
         await client.logout()
-    elif not os.path.isfile("tails.png"):
+    elif not os.path.isfile("data/images/cointails.png"):
         print(Back.RED + "tails.png not found! Please add it then try again!")
         await client.logout()
     time.sleep(2)
@@ -365,8 +365,8 @@ async def setgame(ctx, *, game : str):
                 print(Fore.RED + "Command Error Raised, But The Command Was Still Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]\n       Reason: " + Fore.YELLOW + "Ignore this error!")
 
 
-heads = "heads.png"
-tails = "tails.png"
+heads = "data/images/coin/heads.png"
+tails = "data/images/coin/tails.png"
 @client.command(pass_context=True, aliases=['flip'])
 async def flipcoin(ctx):
     choice = random.randint(1,2)
