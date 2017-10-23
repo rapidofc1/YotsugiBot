@@ -1,82 +1,114 @@
+You can support Yotsugi bot on my Patreon - <https://www.patreon.com/YotsugiBot> 
+
 # Commands List
+- Please check the Music Guide to learn how to use the music commands
+- If you would like to submit suggestions for future commands please do so at <https://feathub.com/Kyousei/YotsugiBot>
 
-Here's a list of all commands for Yotsugi.
+## Table of contents
+- [Administration](#administration)
+- [Fun](#fun)
+- [Bot Info](#bot-info)
+- [Server Info](#server-info)
+- [Searches](#searches)
+- [Bot Owners Only](#bot-owners-only)
 
+## Administration  
+**`;ban`** or **`;b`** 
+- Bans the user from the server. **Requires Ban Members Permission.** | e.g. `;ban @Puru` |
 
+**`;kick`** or **`;k`**
+- Sets a role for a given user. **Requires ManageRoles Permission.** | e.g. `;kick @Puru` |
 
+**`;mute`**
+- Mutes a user from the Channel. **Requires Mute Members Permission.** | e.g. `;mute @Puru` |
 
-## Administration/Moderation Commands
+**`;unmute`**
+- Unmutes a user from the Channel. **Requires Mute Members Permission.** | e.g. `;unmute @Puru` |
 
-```css
-	;b/;ban						|					Description: Bans the user from the server.					|					Usage: ;b @User						|					Permissions: Ban Members Permission (Both User and bot)
+**`;clear`**, **`;prune`**, or **`;purge`**
+- Deletes `X` amount of messages from the channel (up to 100). **Requires Manage Messages Permission.** | e.g. `.clear 50` |
 
-	;k/;kick					|					Description: Kicks the user from the server.				|					Usage: ;k @User						|					Permissions: Kick Members Permissions (Both User and bot)
+**`;setrole`** or **`;setrl`** 
+- Gives a role to a user. **Requires Manage Roles Permission.** | e.g. `;setrole @Puru Day` |
 
-	;mute						|					Description: Mutes the user.								|					Usage: ;mute @User					|					Permissions: Manage Channels (Bot) & Mute Members(Both User and bot) Permissions
+**`;removerole`** or **`;remrl`**
+- Removes a role from a user. **Requires Manage Roles Permission.** | e.g. `;removerole @Puru Day` |
 
-	;unmute						|					Description: Unmutes the user from that Channel.			|					Usage: ;unmute @User				|					Permissions: Manage Channels (Bot) & Mute Members(Both User and bot) Permissions
-	;clear/;prune/;purge  		|					Description: Deletes x amount of messages.					|					Usage: ;prune 50					|					Permissions: Manage Messages Permission (Bth User and bot)
-	;banlist					|					Description: Shows all banned users.						|					Usage: ;banlist						|					Permissions: -
-	;setrl/;setrole				|					Description: Gives the user a role.							|					Usage: ;setrl @User Role			|					Permissions: Manage Roles Permission (Both user and bot)
-	;remrl/;removerole			|					Description: Removes the role from a user.					|					Usage: ;remrl @User Role			|					Permisisons: Manage Roles Permission (Both User and bot)
-	;warn						|					Description: Warns a user.									|					Usage: ;warn @Puru#0391 Rude		|					Permissions: Kick Members Permission (Both User and bot)
-```
+**`;warn`** 
+- Warns a user through a DM. **Requires Kick Members Permission.** | e.g. `;warn @Puru Removing global emotes` |
 
 
 ## Fun
-```css
-	;roll						|					Description: Rolls the dice in NdN format.					|					Usage: ;roll 5d50					|					Permissions: -
+**`;roll`** 
+- Rolls dice (in NdN format). | e.g. `;roll 5d50` |
 
-	;eightball/;8ball			|					Description: 8ball's your line.								|					Usage: ;8ball yah or nah?			|					Permissions: -
+**`;8ball`** or **`;eightball`** 
+- 8balls your question. | e.g. `;8ball Will I ever get married?` |
 
-	;ud							|					Description: Searches the meaning of the word on Urban Dict	|					Usage: ;ud lol						|					Permissions: -
+**`;flip`** 
+- Flips a Yotsugi coin. | e.g. `;flip` |
 
-	;flip						|					Description: Flips the coin.								|					Usage: ;flip						|					Permissions: Attach Files (Bot)
-
-	;safebooru					|					Description: Searches for images by that tag.				|					Usage: ;safebooru Cute				|					Permissions: -
-
-	;rollslots					|					Description: Rolls the slots.								|					Usage: ;rollslots					|					Permissions: -
-```
+**`;rollslots`** 
+- Rolls the Yotsugi slot machine. | e.g. `;rollslots` |
 
 
-## Info
-```css
-	;h							|					Description: Shows help links or help about a command.		|					Usage: ;h or ;h ;banlist			|					Permissions: -
+## Bot Info
+**`;h`** 
+- sends a link to the Self-hosting guide and the commands page. Use before an existing command to learn a command and its usage | e.g. `;h` or `;h ;flip` |
 
-	;servers					|					Description: Lists all servers the bot is in.				|					Usage: ;servers						|					Permissions: -
+**`;servers`** 
+- Lists all servers the bot is in. | e.g. `;servers` |
 
-	;serverid/;serid			|					Description: Shows the ID of the server.					|					Usage: ;serid						|					Permissions: -
-	
-	;channelid/;chnlid			|					Description: Shows the ID of the channel.					|					Usage: ;chnlid						|					Permissions: -
+**`;stats`** 
+- Shows the statistics of the bot. | e.g. `;stats` |
 
-	;server						|					Description: Shows info about the server.					|					Usage: ;server						|					Permissions: -
+**`;author`**
+- Shows info about the author. | e.g. `;author` |
 
-	;user						|					Description: Shows info about the user.						|					Usage: ;user @User					|					Permissions: -
+**`;ping`** 
+- Shows your ping to the bot then to Discord. | e.g. `;ping` |
 
-	;stats						|					Description: Shows the statistics of the bot.				|					Usage: ;stats						|					Permissions: -
-
-	;author						|					Description: Shows info about the author.					|					Usage: ;author						|					Permissions: -
-
-	;ping						|					Description: Shows your ping to the bot then to Discord.	|					Usage: ;author						|					Permissions: -
-
-	;github						|					Description: Posts a link to Yotsugi's GitHub.				|					Usage: ;github						|					Permissions: -
-```
+**`;github`** 
+- Posts a link to Yotsugi's GitHub. | e.g. `;github` |
 
 
-## Self Hosters Only
-```css
-	;update 					|					Description: Updates your bot (FOR LINUX ONLY).				|					Usage: ;update						|					Permissions: -
+## Server Info
+**`;serverid`** or **`;serid`** 
+- Shows the ID of the server. | e.g. `;serverid` |
 
-	;send						|					Description: Sends a DM to the specified user.				|					Usage: ;send @User Hi				|					Permissions: -
+**`;channelid`** or **`;chnlid`**
+- Shows the ID of the channel. | e.g. `;channelid` |
 
-	;shutdown					|					Description: Shuts down the bot.							|					Usage: ;shutdown					|					Permissions: -
+**`;server`** 
+- Shows info about the server. | e.g. `;server` |
 
-	;setgame					|					Description: Changes bot's playing status.					|					Usage: ;setgame with snek			|					Permissions: -
-```
+**`;user`** 
+- Shows info about the User. | e.g. `;user @Puru` |
+
+**`banlist`**
+- Shows the user that are banned on the server. | e.g. `;banlist` |
 
 
-## Music
-```css
-	**Please read the music guide**
-	**It's located on the menu at the left hand side of the website**
-```
+## Searches
+**`;ud`**
+- Searches your word on Urban Dictionary. | e.g. `;ud Discord` |
+
+**`;safebooru`** 
+- Searches for images with a given tag on Safebooru. | e.g. `;safebooru Cute` |
+
+
+## Bot Owners Only
+**`;update`** 
+- Updates your bot (FOR LINUX ONLY).	 | e.g. `;update` |
+
+**`;send`** 
+- Sends a DM to the specified user through your bot.	 | e.g. `;send @Puru Hi	` |
+
+**`;shutdown`** 
+- Shuts down the bot. | e.g. `;shutdown` |
+
+**`;setgame`** 
+- Sets the bot's playing status | e.g. `;setgame a game` |
+
+###### [Back to Top](#table-of-contents)
+
