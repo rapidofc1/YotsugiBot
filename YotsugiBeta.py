@@ -1573,6 +1573,145 @@ async def updatelin(ctx):
         os.startfile(updatefile)
 
 
+	
+## Song Game - Help plz
+def data_entry(sq2):
+    c.execute(sq2)
+    conn.commit()
+    global s2data
+    s2data = c.fetchall()
+    print(Back.RED + str(s2data))
+
+def data_entry(sq3):
+    c.execute(sq3)
+    conn.commit()
+    global s3data
+    s3data = c.fetchall()
+    print(Back.RED + str(s3data))
+
+
+def data_entry(sq4):
+    c.execute(sq4)
+    conn.commit()
+    global s4data
+    s4data = c.fetchall()
+    print(Back.RED + str(s4data))
+
+def data_entry(sq5):
+    c.execute(sq5)
+    conn.commit()
+    global s5data
+    s5data = c.fetchall()
+    print(Back.RED + str(s5data))
+
+def data_entry(sq6):
+    c.execute(sq6)
+    conn.commit()
+    global s6data
+    s6data = c.fetchall()
+    print(Back.RED + str(s6data))
+
+def data_entry(sq7):
+    c.execute(sq7)
+    conn.commit()
+    global sdata
+    s7data = c.fetchall()
+    print(Back.RED + str(s7data))
+
+def data_entry(sq8):
+    c.execute(sq8)
+    conn.commit()
+    global s8data
+    s8data = c.fetchall()
+    print(Back.RED + str(s8data))
+
+def data_entry(sq9):
+    c.execute(sq9)
+    conn.commit()
+    global s9data
+    s9data = c.fetchall()
+    print(Back.RED + str(s9data))
+
+def read_from_db(sq):
+    print(sq)
+    c.execute(sq)
+    conn.commit()
+    global data
+    data = c.fetchall()
+    print(data)
+
+@client.command(pass_context = True)
+async def sgame(ctx, *mode):
+    id = "1"
+    ## Categories
+    ccategorie = "Classic"
+    pcategorie = "Pop"
+    kpcategorie = "K-Pop"
+    jpcategorie = "J-Pop"
+    rcategorie = "Rock"
+    mcategorie = "Metal"
+    rpcategorie = "Rap"
+    hmcategorie = "Heavy_Metal"
+
+    ## Modes
+    nmode = "Normal"
+    ncmode = "Nightcore"
+    fmode = "Fast"
+    smode = "Slow"
+
+    ## Songs
+    # Classic
+    # , http://www.youtube.com/watch?v=O6NRLYUThrY, http://www.youtube.com/watch?v=W-fFHeTX70Q, http://www.youtube.com/watch?v=wygy721nzRc'
+    csong = 'http://www.youtube.com/watch?v=Rb0UmrCXxVA'
+    # Pop
+    psong = ''
+    # K-Pop
+    kpsong = ''
+    # J-Pop
+    jpsong = 'http://www.youtube.com/watch?v=WQQJ7zBzYJs'
+    # Rock
+    rsong = ''
+    # Metal
+    msong = ''
+    # Rap
+    rpsong = ''
+    # Heavy Metal
+    hmsong = ''
+
+    ## SQL Strings
+    sq = "SELECT COUNT(*) id, category, mode, songs FROM SongGame"
+    sq2 = "INSERT INTO SongGame(id, category, mode, songs) VALUES ('" + id + "', '" + ccategorie + "', '" + nmode + "', '" + csong + "')"
+    sq3 = "INSERT INTO SongGame(id, category, mode, songs) VALUES ('" + id + "', '" + pcategorie + "', '" + nmode + "', '" + psong + "')"
+    sq4 = "INSERT INTO SongGame(id, category, mode, songs) VALUES ('" + id + "', '" + kpcategorie + "', '" + nmode + "', '" + kpsong + "')"
+    sq5 = "INSERT INTO SongGame(id, category, mode, songs) VALUES ('" + id + "', '" + jpcategorie + "', '" + nmode + "', '" + jpsong + "')"
+    sq6 = "INSERT INTO SongGame(id, category, mode, songs) VALUES ('" + id + "', '" + rcategorie + "', '" + nmode + "', '" + rsong + "')"
+    sq7 = "INSERT INTO SongGame(id, category, mode, songs) VALUES ('" + id + "', '" + mcategorie + "', '" + nmode + "', '" + msong + "')"
+    sq8 = "INSERT INTO SongGame(id, category, mode, songs) VALUES ('" + id + "', '" + rpcategorie + "', '" + nmode + "', '" + rpsong + "')"
+    sq9 = "INSERT INTO SongGame(id, category, mode, songs) VALUES ('" + id + "', '" + hmcategorie + "', '" + nmode + "', '" + hmsong + "')"
+    read_from_db(sq)
+    if data[0][0] == 1:
+        print("Data has been found!\n" + str(data))
+        embed = discord.Embed(title = "Song Game", color = embed_color)
+        embed.add_field(name="Category", value=data[0][1], inline=True)
+        embed.add_field(name="Mode", value=data[0][2], inline=True)
+        embed.add_field(name="Songs", value=data[0][3], inline=True)
+        await client.say(embed = embed)
+    elif data[0][0] == 0:
+        data_entry(sq2)
+        #data_entry(sq3)
+        #data_entry(sq4)
+        #data_entry(sq5)
+        #data_entry(sq6)
+        #data_entry(sq7)
+        #data_entry(sq8)
+        #data_entry(sq9)
+        print(Back.RED + "No Data has been found!\n" + str(data))
+        embed = discord.Embed(title="Debugger", color = 0xFF0000)
+        embed.add_field(name="Data", value=data, inline=False)
+        await client.say(embed = embed)
+        await client.say("Inserting data...")
+        print(Fore.GREEN + "Inserting Data....")
+	
 
 '''---------------------------------------------------------------------'''
 client.run(BotToken)
