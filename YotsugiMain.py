@@ -782,6 +782,15 @@ async def updatelin(ctx):
         embed = discord.Embed(description = "Updating...", color = embed_color)
         await client.say(embed = embed)
         os.startfile(updatefile)
+	
+
+@client.command(pass_context = True)
+async def reboot(ctx):
+    rebootf = "reboot.sh"
+    await client.say("Restarting...")
+    os.startfile(rebootf)
+    print(Fore.GREEN + "Reboot initiated")
+    await client.logout()
 
 
 client.run(BotToken)
