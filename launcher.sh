@@ -9,6 +9,7 @@ choice=4
 		echo "2-- Update"
 		echo "3-- Start"
 		echo "4-- Exit"
+		echo -n "IMPORTANT NOTE: When Updating, make a copy of credentials.py, because the script will delete all files and install updates!"
 	
 while [ $choice -eq 4 ]; do
 read choice
