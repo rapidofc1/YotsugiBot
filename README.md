@@ -23,7 +23,7 @@
 
 ## Self Hosting
 
-If you'd like to self host Yotsugi on your PC and your Operating System(OS) is Windows, follow this [guide](https://github.com/Kyousei/YotsugiBot/wiki/Windows-Self-Hosting-Guide).
+If you'd like to self host Yotsugi on your PC and your Operating System(OS) is Windows, follow this [guide](http://yotsugibot.readthedocs.io/en/latest/Guides/Windows%20Guide/).
 
 
-If you'd like to self host Yotsugi on your Linux/Ubuntu VPS, follow this [guide](https://github.com/Kyousei/YotsugiBot/wiki/Linux-Self-Hosting-Guide).
+If you'd like to self host Yotsugi on your Linux/Ubuntu VPS, follow this [guide](http://yotsugibot.readthedocs.io/en/latest/Guides/Linux%20Guide/).
