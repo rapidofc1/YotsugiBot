@@ -16,6 +16,9 @@ if [ $choice -eq 1 ] ; then
     echo "Selected 1; Download Yotsugi! (Downloads and installs prereqs)"
     echo "Running..."
     curl -L https://raw.githubusercontent.com/Kyousei/YotsugiBotWindows/master/download.sh | sh
+	echo "Installing Prereqs...!"
+	sleep 2
+	curl -L https://raw.githubusercontent.com/Kyousei/YotsugiBotWindows/master/prereqs.sh | sh
     echo "//////////////////////////"
     echo "Finished!"
 else
