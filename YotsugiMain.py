@@ -16,6 +16,7 @@ from credentials import Owners as owner
 from credentials import EmbedColor as embed_color
 from credentials import Prefix as prefix
 from credentials import LoggingChannel as loggingchannel
+from credentials import LoggingServer as logser
 ###
 bot_version = 'v0.6.1'
 bot_author = 'Kyousei#8357'
@@ -682,55 +683,70 @@ async def h(command = None):
 
 @client.event
 async def on_server_role_create(role, channel = loggingchannel):
-    embed = discord.Embed(title = "New Role Created!", color = embed_color)
-    embed.add_field(name="Role Name: ", value=role.name, inline=True)
-    embed.add_field(name="Server:", value=message.server.name, inline=False)
-    embed.add_field(name="Server ID:", value=message.server.id, inline=False)
-    await client.send_message(discord.Object(id=loggingchannel), embed=embed)
+    if logserver == message.server.id:
+    	embed = discord.Embed(title = "New Role Created!", color = embed_color)
+    	embed.add_field(name="Role Name: ", value=role.name, inline=True)
+    	embed.add_field(name="Server:", value=message.server.name, inline=False)
+    	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
+    	await client.send_message(discord.Object(id=loggingchannel), embed=embed)
+    else:
+	return
     await client.process_commands(role)
 
 
 @client.event
 async def on_server_role_delete(role, channel = loggingchannel):
-    embed = discord.Embed(title = "Role Deleted", color = 0xF00000)
-    embed.add_field(name="Role Name: ", value=role.name, inline=True)
-    embed.add_field(name="Server:", value=message.server.name, inline=False)
-    embed.add_field(name="Server ID:", value=message.server.id, inline=False)
-    await client.send_message(discord.Object(id=loggingchannel), embed=embed)
+    if logserver == message.server.id:
+    	embed = discord.Embed(title = "Role Deleted", color = 0xF00000)
+    	embed.add_field(name="Role Name: ", value=role.name, inline=True)
+    	embed.add_field(name="Server:", value=message.server.name, inline=False)
+    	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
+    	await client.send_message(discord.Object(id=loggingchannel), embed=embed)
+    else:
+	return
     await client.process_commands(role)
 
 
 @client.event
 async def on_member_ban(member, channel = loggingchannel):
-    embed = discord.Embed(title = "User Banned!", color = 0xF00000)
-    embed.set_author(name=member.name, url=member.avatar_url, icon_url=member.avatar_url)
-    embed.add_field(name="User: ", value=member.name + "#" + member.discriminator, inline=True)
-    embed.add_field(name="Server:", value=message.server.name, inline=False)
-    embed.add_field(name="Server ID:", value=message.server.id, inline=False)
-    await client.send_message(discord.Object(id=loggingchannel), embed=embed)
+    if logserver == message.server.id:
+    	embed = discord.Embed(title = "User Banned!", color = 0xF00000)
+    	embed.set_author(name=member.name, url=member.avatar_url, icon_url=member.avatar_url)
+    	embed.add_field(name="User: ", value=member.name + "#" + member.discriminator, inline=True)
+    	embed.add_field(name="Server:", value=message.server.name, inline=False)
+    	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
+    	await client.send_message(discord.Object(id=loggingchannel), embed=embed)
+    else:
+	return
     await client.process_commands(member)
 
 
 @client.event
 async def on_message_edit(message, after, channel = loggingchannel):
-    embed = discord.Embed(title = "Message Edited!", description = "In channel: <#" + message.channel.id + ">", color = embed_color)
-    embed.add_field(name="New Content: ", value=after.content, inline=True)
-    embed.add_field(name="Old Content: ", value=message.content, inline=False)
-    embed.add_field(name="User: ", value=message.author.name + "#" + message.author.discriminator, inline=False)
-    embed.add_field(name="Server:", value=message.server.name, inline=False)
-    embed.add_field(name="Server ID:", value=message.server.id, inline=False)
-    await client.send_message(discord.Object(id=loggingchannel), embed = embed)
+    if logserver == message.server.id:
+    	embed = discord.Embed(title = "Message Edited!", description = "In channel: <#" + message.channel.id + ">", color = embed_color)
+    	embed.add_field(name="New Content: ", value=after.content, inline=True)
+    	embed.add_field(name="Old Content: ", value=message.content, inline=False)
+    	embed.add_field(name="User: ", value=message.author.name + "#" + message.author.discriminator, inline=False)
+    	embed.add_field(name="Server:", value=message.server.name, inline=False)
+    	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
+    	await client.send_message(discord.Object(id=loggingchannel), embed = embed)
+    else:
+	return
     await client.process_commands(message)
 
 
 @client.event
 async def on_message_delete(message, channel = loggingchannel):
-    embed = discord.Embed(title = "Message Deleted!", description = "In channel: <#" + message.channel.id + ">", color = embed_color)
-    embed.add_field(name="Message Content: ", value=message.content, inline=True)
-    embed.add_field(name="User: ", value=message.author.name + "#" + message.author.discriminator)
-    embed.add_field(name="Server:", value=message.server.name, inline=False)
-    embed.add_field(name="Server ID:", value=message.server.id, inline=False)
-    await client.send_message(discord.Object(id=loggingchannel), embed = embed)
+    if logserver == message.server.id:
+    	embed = discord.Embed(title = "Message Deleted!", description = "In channel: <#" + message.channel.id + ">", color = embed_color)
+    	embed.add_field(name="Message Content: ", value=message.content, inline=True)
+        embed.add_field(name="User: ", value=message.author.name + "#" + message.author.discriminator)
+    	embed.add_field(name="Server:", value=message.server.name, inline=False)
+    	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
+    	await client.send_message(discord.Object(id=loggingchannel), embed = embed)
+    else:
+	return
     await client.process_commands(message)
 
 ##### LOGGING #####
