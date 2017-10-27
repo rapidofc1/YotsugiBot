@@ -26,7 +26,6 @@ else
     if [ $choice -eq 2 ] ; then
         echo "Selected 2; Update Yotsugi"
         echo "Running..."
-        rm -rf *
         echo "Downloading updates...."
         curl -L https://raw.githubusercontent.com/Kyousei/YotsugiBotWindows/master/download.sh | sh
 else
