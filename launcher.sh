@@ -2,6 +2,8 @@
 echo "Welcome to Yotsugi Bot launcher for WINDOWS!"
 echo ""
 echo "  Choose what you would like to do below!"
+echo ""
+echo ""
 
 
 choice=4
