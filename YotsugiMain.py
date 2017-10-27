@@ -11,6 +11,7 @@ import pickle
 import colorama
 from colorama import Fore, Back, Style
 import os
+import sqlite3
 from credentials import BotToken
 from credentials import Owners as owner
 from credentials import EmbedColor as embed_color
@@ -18,7 +19,7 @@ from credentials import Prefix as prefix
 from credentials import LoggingChannel as loggingchannel
 from credentials import LoggingServer as logser
 ###
-bot_version = 'v0.6.1'
+bot_version = 'v0.6.3'
 bot_author = 'Kyousei#8357'
 bot_author_id = '145878866429345792'
 ###
@@ -26,6 +27,19 @@ Client = discord.Client()
 bot_prefix= prefix
 client = commands.Bot(command_prefix=bot_prefix)
 start_time = time.time()
+
+## DATABASE ##
+
+conn = sqlite3.connect('YotsugiBot.db')
+c = conn.cursor()
+
+def create_table():
+    c.execute('CREATE TABLE IF NOT EXISTS Hackbans(user_id TEXT, server_id TEXT)')
+
+create_table()
+
+## DATABASE ##
+
 
  
 @client.event
@@ -655,8 +669,8 @@ async def h(command = None):
 
     if command == prefix+'warn':
         embed = discord.Embed(title = "`"+ prefix +"warn`", description = "Warns the user.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"warn @USer Rude`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Usage', value="`"+ prefix +"warn @ser Rude`", inline=True)
+        embed.add_field(name='User Permissions:', value='Kick Members', inline=True)
         embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
         await client.say(embed = embed)
         return
@@ -807,6 +821,45 @@ async def updatelin(ctx):
         embed = discord.Embed(description = "Updating...", color = embed_color)
         await client.say(embed = embed)
         os.startfile(updatefile)
+
+
+## HACKBAN ##
+def data_entry(hkban):
+    c.execute(hkban)
+    conn.commit()
+    global data
+    data = c.fetchall()
+
+@client.command(pass_context = True, aliases=['hb'])
+async def hackban(ctx, *, id: str):
+    server_id = ctx.message.server.id
+    hkban = "INSERT INTO Hackbans (user_id, server_id) VALUES ('" + id + "', '" + server_id + "')"
+    data_entry(hkban)
+    embed = discord.Embed(description = "Successfully Hackbanned: " + id, color = embed_color)
+    await client.say("Hackbanned: " + id)
+
+
+def read_from_db(banonjoin):
+    c.execute(banonjoin)
+    conn.commit()
+    global datta
+    datta = c.fetchall()
+
+@client.event
+async def on_member_join(member):
+    server_id = member.server.id
+    user_id = member.id
+    banonjoin = "SELECT COUNT(*) FROM Hackbans WHERE user_id = '" + user_id + "' AND server_id = '" + server_id + "'"
+    read_from_db(banonjoin)
+    if datta[0][0] < 1:
+        print(Back.WHITE + Fore.BLUE + "A non-hackbanned user joined, they were not bananaed! :D")
+    elif datta[0][0] > 0:
+        print("user is hackbananaed")
+        print(Back.WHITE + Fore.RED + "A hackbanned user joined but was bananaed! :D")
+        await client.ban(member)
+    print(Back.WHITE + Fore.BLUE + str(datta))
+
+## HACKBAN ##
 
 
 client.run(BotToken)
