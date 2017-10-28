@@ -747,7 +747,7 @@ async def on_message_delete(message, channel = loggingchannel):
     if logserver == message.server.id:
     	embed = discord.Embed(title = "Message Deleted!", description = "In channel: <#" + message.channel.id + ">", color = embed_color)
     	embed.add_field(name="Message Content: ", value=message.content, inline=True)
-        embed.add_field(name="User: ", value=message.author.name + "#" + message.author.discriminator, inline=True)
+        embed.add_field(name="User: ", value=str(message.author), inline=True)
         embed.add_field(name="Server:", value=message.server.name, inline=False)
     	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
     	await client.send_message(discord.Object(id=loggingchannel), embed = embed)
