@@ -729,17 +729,6 @@ async def on_member_ban(member, channel = loggingchannel):
 
 
 @client.event
-async def on_message_delete(message):
-    if logserver == message.server.id:
-        embed = discord.Embed(title = "Message Deleted!", description = "In channel: **" + str(message.channel) + "**", color = embed_color)
-        embed.add_field(name="Message Content: ", value=message.content, inline=True)
-        embed.add_field(name="Server:", value=message.server.name, inline=False)
-        embed.add_field(name="Server ID:", value=message.server.id, inline=False)
-        await client.send_message(discord.Object(id=loggingchannel), embed = embed)
-    elif logserver != message.server.id: print("")
-    await client.process_commands(message)
-
-@client.event
 async def on_message_edit(message, after, channel = loggingchannel):
     if logserver == message.server.id:
     	embed = discord.Embed(title = "Message Edited!", description = "In channel: **" + str(message.channel) + "**", color = embed_color)
