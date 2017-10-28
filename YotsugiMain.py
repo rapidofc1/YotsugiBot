@@ -731,7 +731,7 @@ async def on_member_ban(member, channel = loggingchannel):
 @client.event
 async def on_message_edit(message, after, channel = loggingchannel):
     if logserver == message.server.id:
-    	embed = discord.Embed(title = "Message Edited!", description = "In channel: <#" + message.channel.id + ">", color = embed_color)
+    	embed = discord.Embed(title = "Message Edited!", description = "In channel: **" + str(message.channel) + "**", color = embed_color)
     	embed.add_field(name="New Content: ", value=after.content, inline=True)
     	embed.add_field(name="Old Content: ", value=message.content, inline=False)
     	embed.add_field(name="User: ", value=message.author.name + "#" + message.author.discriminator, inline=False)
@@ -745,7 +745,7 @@ async def on_message_edit(message, after, channel = loggingchannel):
 @client.event
 async def on_message_delete(message, channel = loggingchannel):
     if logserver == message.server.id:
-    	embed = discord.Embed(title = "Message Deleted!", description = "In channel: <#" + message.channel.id + ">", color = embed_color)
+    	embed = discord.Embed(title = "Message Deleted!", description = "In channel: **" + str(message.channel) + "**", color = embed_color)
     	embed.add_field(name="Message Content: ", value=message.content, inline=True)
         embed.add_field(name="User: ", value=str(message.author), inline=True)
         embed.add_field(name="Server:", value=message.server.name, inline=False)
