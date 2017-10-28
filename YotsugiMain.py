@@ -696,41 +696,41 @@ async def h(command = None):
 
 @client.event
 async def on_server_role_create(role, channel = loggingchannel):
-    if logserver == message.server.id:
+    if logser == message.server.id:
     	embed = discord.Embed(title = "New Role Created!", color = embed_color)
     	embed.add_field(name="Role Name: ", value=role.name, inline=True)
     	embed.add_field(name="Server:", value=message.server.name, inline=False)
     	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
     	await client.send_message(discord.Object(id=loggingchannel), embed=embed)
-    elif logserver != message.server.id: print("")
+    elif logser != message.server.id: print("")
 
 
 @client.event
 async def on_server_role_delete(role, channel = loggingchannel):
-    if logserver == message.server.id:
+    if logser == message.server.id:
     	embed = discord.Embed(title = "Role Deleted", color = 0xF00000)
     	embed.add_field(name="Role Name: ", value=role.name, inline=True)
     	embed.add_field(name="Server:", value=message.server.name, inline=False)
     	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
     	await client.send_message(discord.Object(id=loggingchannel), embed=embed)
-    elif logserver != message.server.id: print("")
+    elif logser != message.server.id: print("")
 
 
 @client.event
 async def on_member_ban(member, channel = loggingchannel):
-    if logserver == message.server.id:
+    if logser == message.server.id:
     	embed = discord.Embed(title = "User Banned!", color = 0xF00000)
     	embed.set_author(name=member.name, url=member.avatar_url, icon_url=member.avatar_url)
     	embed.add_field(name="User: ", value=member.name + "#" + member.discriminator, inline=True)
     	embed.add_field(name="Server:", value=message.server.name, inline=False)
     	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
     	await client.send_message(discord.Object(id=loggingchannel), embed=embed)
-    elif logserver != message.server.id: print("")
+    elif logser != message.server.id: print("")
 
 
 @client.event
 async def on_message_edit(message, after, channel = loggingchannel):
-    if logserver == message.server.id:
+    if logser == message.server.id:
     	embed = discord.Embed(title = "Message Edited!", description = "In channel: **" + str(message.channel) + "**", color = embed_color)
     	embed.add_field(name="New Content: ", value=after.content, inline=True)
     	embed.add_field(name="Old Content: ", value=message.content, inline=False)
@@ -738,7 +738,7 @@ async def on_message_edit(message, after, channel = loggingchannel):
     	embed.add_field(name="Server:", value=message.server.name, inline=False)
     	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
     	await client.send_message(discord.Object(id=loggingchannel), embed = embed)
-    elif logserver != message.server.id: print("")
+    elif logser != message.server.id: print("")
     await client.process_commands(message)
 ##### LOGGING #####
 
@@ -799,7 +799,6 @@ async def updatelin(ctx):
         await client.say(embed = embed)
         os.startfile(updatefile)
         await client.logout()
-	
 
 @client.command(pass_context = True)
 async def reboot(ctx):
