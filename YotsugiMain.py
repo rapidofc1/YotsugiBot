@@ -820,9 +820,13 @@ def data_entry(hkban):
 async def hackban(ctx, *, id: str):
     server_id = ctx.message.server.id
     hkban = "INSERT INTO Hackbans (user_id, server_id) VALUES ('" + id + "', '" + server_id + "')"
-    data_entry(hkban)
-    embed = discord.Embed(description = "Successfully Hackbanned: " + id, color = embed_color)
-    await client.say("Hackbanned: " + id)
+    if ctx.message.author.server_permissions.administrator:
+        data_entry(hkban)
+        embed = discord.Embed(description = "Successfully Hackbanned: " + str(id), color = embed_color)
+        await client.say(embed = embed)
+    else:
+        embed = discord.Embed(description = "Insufficient Permissions!", color = 0xFF0000)
+        await client.say(embed = embed)
 
 
 def read_from_db(banonjoin):
