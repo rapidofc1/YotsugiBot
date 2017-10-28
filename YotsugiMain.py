@@ -820,6 +820,7 @@ async def updatelin(ctx):
         embed = discord.Embed(description = "Updating...", color = embed_color)
         await client.say(embed = embed)
         os.startfile(updatefile)
+	await client.logout()
 	
 
 @client.command(pass_context = True)
