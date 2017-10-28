@@ -703,7 +703,6 @@ async def on_server_role_create(role, channel = loggingchannel):
     	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
     	await client.send_message(discord.Object(id=loggingchannel), embed=embed)
     elif logserver != message.server.id: print("")
-    await client.process_commands(role)
 
 
 @client.event
@@ -715,7 +714,6 @@ async def on_server_role_delete(role, channel = loggingchannel):
     	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
     	await client.send_message(discord.Object(id=loggingchannel), embed=embed)
     elif logserver != message.server.id: print("")
-    await client.process_commands(role)
 
 
 @client.event
@@ -728,7 +726,6 @@ async def on_member_ban(member, channel = loggingchannel):
     	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
     	await client.send_message(discord.Object(id=loggingchannel), embed=embed)
     elif logserver != message.server.id: print("")
-    await client.process_commands(member)
 
 
 @client.event
