@@ -796,15 +796,26 @@ async def server(ctx):
 
 
 @client.command(pass_context = True, aliases=['userinfo'])
-async def user(ctx, *, member: discord.Member):
-    embed = discord.Embed(color = embed_color)
-    embed.set_thumbnail(url = member.avatar_url)
-    embed.add_field(name="User ID:", value=member.id, inline=True)
-    embed.add_field(name="User Name:", value=member, inline=True)
-    embed.add_field(name="Is Bot?:", value=member.bot, inline=True)
-    embed.add_field(name="Join Date:", value=member.created_at, inline=True)
-    embed.add_field(name="Nickname:", value=member.display_name, inline=True)
-    await client.say(embed = embed)
+async def user(ctx, *, member: discord.Member = None):
+    if member is None:
+        member = ctx.message.author
+        embed = discord.Embed(color = embed_color)
+        embed.set_thumbnail(url = member.avatar_url)
+        embed.add_field(name="User ID:", value=member.id, inline=True)
+        embed.add_field(name="User Name:", value=member, inline=True)
+        embed.add_field(name="Is Bot?:", value=member.bot, inline=True)
+        embed.add_field(name="Join Date:", value=member.created_at, inline=True)
+        embed.add_field(name="Nickname:", value=member.display_name, inline=True)
+        await client.say(embed = embed)
+    else:
+        embed = discord.Embed(color = embed_color)
+        embed.set_thumbnail(url = member.avatar_url)
+        embed.add_field(name="User ID:", value=member.id, inline=True)
+        embed.add_field(name="User Name:", value=member, inline=True)
+        embed.add_field(name="Is Bot?:", value=member.bot, inline=True)
+        embed.add_field(name="Join Date:", value=member.created_at, inline=True)
+        embed.add_field(name="Nickname:", value=member.display_name, inline=True)
+        await client.say(embed = embed)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
 
 
