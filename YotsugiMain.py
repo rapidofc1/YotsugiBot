@@ -689,7 +689,22 @@ async def h(command = None):
         embed.add_field(name='Bot Permissions:', value='Send Messages, Attach Files, Embed Links', inline=True)
         await client.say(embed = embed)
         return
+        
+    if command == prefix+'hackban':
+        embed = discord.Embed(title = "`"+ prefix +"hb` / `" + prefix + "hackban`", description = "Bans the user which is not in the server. **Must Be ID of the user**", color = embed_color)
+        embed.add_field(name='Usage', value="`"+ prefix +"hb 123123123123` or "+prefix+"`hackban 123123123123`", inline=True)
+        embed.add_field(name='User Permissions:', value='Ban Members', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Ban Members', inline=True)
+        await client.say(embed = embed)
+        return
 
+    if command == prefix+'hb':
+        embed = discord.Embed(title = "`"+ prefix +"hb` / `" + prefix + "hackban`", description = "Bans the user which is not in the server. **Must Be ID of the user**", color = embed_color)
+        embed.add_field(name='Usage', value="`"+ prefix +"hb 123123123123` or "+prefix+"`hackban 123123123123`", inline=True)
+        embed.add_field(name='User Permissions:', value='Ban Members', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Ban Members', inline=True)
+        await client.say(embed = embed)
+        return
 
 ##### LOGGING #####
 
