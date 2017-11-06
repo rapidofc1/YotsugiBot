@@ -35,7 +35,10 @@ You can support Yotsugi bot on my Patreon - <https://www.patreon.com/YotsugiBot>
 - Removes a role from a user. **Requires Manage Roles Permission.** | e.g. `;removerole @Puru Day` |
 
 **`;warn`** 
-- Warns a user through a DM. **Requires Kick Members Permission.** | e.g. `;warn @Puru Removing global emotes` |
+- Warns a user through a DM. **Requires Kick Members Permission.** | e.g. `;warn @Puru Being yourself :^)` |
+
+**`;hackban`**, **`;hb`**
+- Hackbans the user by ID. **Requires Ban Members Permission.** | e.g. `;hackban 234611045547769856` |
 
 
 ## Fun
