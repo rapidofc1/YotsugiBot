@@ -893,8 +893,12 @@ async def on_member_join(member):
 
 @client.group(pass_context = True, invoke_without_command = True)
 async def serperm(ctx):
-    embed = discord.Embed(title = "Permissions", description = "nsfw", color = embed_color)
-    await client.say(embed = embed)
+    if ctx.message.author.server_permissions.administrator:
+        embed = discord.Embed(title = "Permissions", description = "nsfw", color = embed_color)
+        await client.say(embed = embed)
+    else:
+        embed = discord.Embed(desciption = "Insufficient Permissions!", color = 0xF00000)
+        await client.say(embed = embed)
 
 def serpermhen(sqlstr):
     c.execute(sqlstr)
