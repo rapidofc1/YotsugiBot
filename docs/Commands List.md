@@ -10,6 +10,7 @@ You can support Yotsugi bot on my Patreon - <https://www.patreon.com/YotsugiBot>
 - [Bot Info](#bot-info)
 - [Server Info](#server-info)
 - [Searches](#searches)
+- [NSFW](#nsfw)
 - [Bot Owners Only](#bot-owners-only)
 
 ## Administration  
@@ -35,10 +36,13 @@ You can support Yotsugi bot on my Patreon - <https://www.patreon.com/YotsugiBot>
 - Removes a role from a user. **Requires Manage Roles Permission.** | e.g. `;removerole @Puru Day` |
 
 **`;warn`** 
-- Warns a user through a DM. **Requires Kick Members Permission.** | e.g. `;warn @Puru Being yourself :^)` |
+- Warns a user through a DM. **Requires Kick Members Permission.** | e.g. `;warn @Puru Removing global emotes` |
 
 **`;hackban`**, **`;hb`**
 - Hackbans the user by ID. **Requires Ban Members Permission.** | e.g. `;hackban 234611045547769856` |
+
+**`;serperm`**
+- Server permissions, provide no arguments to show the list of all permissions. **Requires Administrator Permission.** | e.g. `;serperm` or `;serperm nsfw 0` |
 
 
 ## Fun
@@ -100,6 +104,11 @@ You can support Yotsugi bot on my Patreon - <https://www.patreon.com/YotsugiBot>
 - Searches for images with a given tag on Safebooru. | e.g. `;safebooru Cute` |
 
 
+## NSFW
+**`;hentai`**
+- Posts hentai! | e.g. `;hentai` |
+
+
 ## Bot Owners Only
 **`;update`** 
 - Updates your bot (FOR LINUX ONLY).	 | e.g. `;update` |
@@ -114,4 +123,3 @@ You can support Yotsugi bot on my Patreon - <https://www.patreon.com/YotsugiBot>
 - Sets the bot's playing status | e.g. `;setgame a game` |
 
 ###### [Back to Top](#table-of-contents)
-
