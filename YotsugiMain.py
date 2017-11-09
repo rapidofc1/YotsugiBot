@@ -904,7 +904,7 @@ async def serperm(ctx):
         embed = discord.Embed(title = "Permissions", description = "nsfw", color = embed_color)
         await client.say(embed = embed)
     else:
-        embed = discord.Embed(desciption = "Insufficient Permissions!", color = 0xF00000)
+        embed = discord.Embed(description = "Insufficient Permissions!", color = 0xF00000)
         await client.say(embed = embed)
 
 def serpermhen(sqlstr):
