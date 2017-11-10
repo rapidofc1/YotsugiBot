@@ -23,7 +23,6 @@ bot_version = 'v0.6.3'
 bot_author = 'Kyousei#8357'
 bot_author_id = '145878866429345792'
 ###
-Client = discord.Client()
 bot_prefix= prefix
 client = commands.Bot(command_prefix=bot_prefix)
 start_time = time.time()
@@ -42,7 +41,7 @@ create_table()
 ## DATABASE ##
 
 
- 
+
 @client.event
 async def on_ready():
     print("Logging In...")
@@ -83,7 +82,7 @@ async def h(command = None):
     #some code to check if the command is an actual command (depends on how you make commands)
     return
 
- 
+
 @client.command(pass_context = True)
 async def ping(ctx):
     pingtime = time.time()
@@ -91,14 +90,14 @@ async def ping(ctx):
     ping = (time.time() - pingtime) * 1000
     await client.edit_message(pingms, "Pong! :ping_pong:  The ping time is `%dms`" % ping)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
- 
+
 #command1
 @client.command(pass_context = True)
 async def invite(ctx):
     embed = discord.Embed(title = "Here are invite links:", description = "Invite me to your server with this link: https://discordapp.com/oauth2/authorize?client_id=331766751765331969&scope=bot&permissions=66186303", color = embed_color)
     return await client.say(embed = embed)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
- 
+
 #command2
 @client.command(pass_context = True, no_pm = True)
 async def banlist(ctx):
@@ -107,7 +106,7 @@ async def banlist(ctx):
     embed = discord.Embed(title = "List of Banned Members", description = x, color = embed_color)
     return await client.say(embed = embed)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
- 
+
 #command3
 @client.command(pass_context=True, no_pm = True)
 async def connect(ctx):
@@ -117,7 +116,7 @@ async def connect(ctx):
     voice_channel = author.voice_channel
     vc = await client.join_voice_channel(voice_channel)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
- 
+
 #command4
 @client.command(pass_context = True, no_pm = True)
 async def disconnect(ctx):
@@ -125,9 +124,9 @@ async def disconnect(ctx):
         if(x.server == ctx.message.server):
             return await x.disconnect()
             print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
-        
+
 #command6
-@client.command(pass_context=True, no_pm = True, aliases=['prune', 'purge'])       
+@client.command(pass_context=True, no_pm = True, aliases=['prune', 'purge'])
 async def clear(ctx, number):
     embed = discord.Embed(description = ":x: Insufficient permissions! You require **Manage Messages** permission in order to clear messages!", color = 0xF00000)
     if not ctx.message.author.server_permissions.manage_messages:
@@ -189,7 +188,7 @@ async def kick(ctx, *, member : discord.Member = None):
     embed = discord.Embed(description = "**%s** has been kicked."%member.name, color = 0xF00000)
     return await client.say(embed = embed)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
-	
+
 #command12
 @client.command(pass_context = True, no_pm = True)
 async def mute(ctx, *, member : discord.Member):
@@ -258,15 +257,15 @@ async def github(ctx):
     embed = discord.Embed(description = "Yotsugi Github can be found here: https://github.com/YotsugiBot", color = embed_color)
     await client.say(embed = embed)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
-	
-	
+
+
 @client.command(pass_context = True)
 async def license(ctx):
 	embed = discord.Embed(description = "Read the License [here](https://github.com/Kyousei/YotsugiBot/blob/master/LICENSE.md)", color = embed_color)
 	await client.say(embed = embed)
 	print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
 
-	
+
 #command18
 @client.command(pass_context = True, no_pm = True)
 async def servers(ctx):
@@ -300,7 +299,7 @@ async def shutdown(ctx):
         await client.say(embed = embed)
         print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran: " + prefix + aliases + "\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
         await client.logout()
-        
+
 
 @client.command(pass_context = True, no_pm = True, aliases=['serid'])
 async def serverid(ctx, *, member = discord.Member):
@@ -357,7 +356,7 @@ async def ud(*msg):
     response = requests.get(api, params=[("term", word)]).json()
     embed = discord.Embed(description = "No results found!", color = 0xFF0000)
     if len(response["list"]) == 0: return await client.say(embed = embed)
-    
+
     embed = discord.Embed(title = "Word", description = word, color = embed_color)
     embed.add_field(name = "Top definition:", value = response['list'][0]['definition'])
     embed.add_field(name = "Examples:", value = response['list'][0]["example"])
@@ -691,7 +690,7 @@ async def h(command = None):
         embed.add_field(name='Bot Permissions:', value='Send Messages, Attach Files, Embed Links', inline=True)
         await client.say(embed = embed)
         return
-        
+
     if command == prefix+'hackban':
         embed = discord.Embed(title = "`"+ prefix +"hb` / `" + prefix + "hackban`", description = "Bans the user which is not in the server. **Must Be ID of the user**", color = embed_color)
         embed.add_field(name='Usage', value="`"+ prefix +"hb 123123123123` or "+prefix+"`hackban 123123123123`", inline=True)
@@ -1207,7 +1206,7 @@ async def hentai(ctx):
         if hendata[0][1] < 1:
             embed = discord.Embed(description = "NSFW is disabled!", color = 0xFF0000)
             await client.say(embed = embed)
-        elif hendata[0][1] > 0: 
+        elif hendata[0][1] > 0:
             embed = discord.Embed(description = "Here's your hentai, " + ctx.message.author.mention + "!", color = embed_color)
             embed.set_image(url = random.choice(hentai_images))
             await client.say(embed = embed)
