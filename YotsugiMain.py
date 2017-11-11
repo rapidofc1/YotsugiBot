@@ -270,9 +270,10 @@ async def license(ctx):
 @client.command(pass_context = True, no_pm = True)
 async def servers(ctx):
     x = '\n'.join([str(server) for server in client.servers])
+    y = len(client.servers)
     print(x)
-    embed = discord.Embed(title = "Servers", description = x, color = embed_color)
-    return await client.say(embed = embed)
+    embed = discord.Embed(title = "Servers: " + str(y), description = x, color = embed_color)
+    await client.say(embed = embed)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
 
 
