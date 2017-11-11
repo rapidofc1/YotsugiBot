@@ -3,7 +3,7 @@
   
   
 ## What can Yotsugi do?
-  Read the commands list, that's the best answer. [Commands List (Website)](https://yotsugi.tk/commands)/[Commands List (ReadTheDocs](http://yotsugibot.readthedocs.io/en/latest/Commands%20List/)
+  Read the commands list, that's the best answer. [Commands List (Website)](https://yotsugi.tk/commands)/[Commands List (ReadTheDocs)](http://yotsugibot.readthedocs.io/en/latest/Commands%20List/)
   
   
 ## How can I add Yotsugi to my server?
