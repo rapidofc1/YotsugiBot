@@ -1,13 +1,9 @@
-# Welcome to <b>Yotsugi Bot</b> documentation page!
-
-
-
 ## What is Yotsugi?
   Yotsugi is a open-source Discord bot written in Python using Discord.py library.
   
   
 ## What can Yotsugi do?
-  Read the commands list, that's the best answer. [Commands List](https://goo.gl/w6Aoag).
+  Read the commands list, that's the best answer. [Commands List (Website)](https://yotsugi.tk/commands)/[Commands List (ReadTheDocs](http://yotsugibot.readthedocs.io/en/latest/Commands%20List/)
   
   
 ## How can I add Yotsugi to my server?
@@ -27,7 +23,6 @@
   
 ## Who made Yotsugi?
   Yotsugi was made by Kyousei#8357.
-  
   
   
 ## Is there a website?
