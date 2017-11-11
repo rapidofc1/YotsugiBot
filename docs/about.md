@@ -30,4 +30,4 @@
   
   
 ## Is there a website?
-  Yes, but it's not an official one, click [here](https://yotsugibot.github.io) to visit it.
+  Yes, there's an official website, click [here](https://yotsugi.tk)
