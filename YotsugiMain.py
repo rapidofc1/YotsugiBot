@@ -23,7 +23,6 @@ bot_version = 'v0.6.3'
 bot_author = 'Kyousei#8357'
 bot_author_id = '145878866429345792'
 ###
-Client = discord.Client()
 bot_prefix= prefix
 client = commands.Bot(command_prefix=bot_prefix)
 start_time = time.time()
@@ -270,9 +269,10 @@ async def license(ctx):
 @client.command(pass_context = True, no_pm = True)
 async def servers(ctx):
     x = '\n'.join([str(server) for server in client.servers])
+    y = len(client.servers)
     print(x)
-    embed = discord.Embed(title = "Servers", description = x, color = embed_color)
-    return await client.say(embed = embed)
+    embed = discord.Embed(title = "Servers: " + str(y), description = x, color = embed_color)
+    await client.say(embed = embed)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
 
 
