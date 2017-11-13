@@ -1575,7 +1575,17 @@ async def updatelin(ctx):
         await client.say(embed = embed)
         os.startfile(updatefile)
 
+def givexp(givxp):
+	.execute(givxp)
+	conn.commit(givxp)
 
 
+@client.event
+async def on_message(message):
+	levelup = +1
+	¨givxp = "UPDATE UserData SET level = '" + levelup + "' WHERE user_id = '" + member.id + "'"
+	xp = 5*(message)
+	if time.time == +2:
+		givexp(givxp)
 '''---------------------------------------------------------------------'''
 client.run(BotToken)
