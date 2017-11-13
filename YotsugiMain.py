@@ -878,12 +878,12 @@ async def on_member_join(member):
     banonjoin = "SELECT COUNT(*) FROM Hackbans WHERE user_id = '" + user_id + "' AND server_id = '" + server_id + "'"
     read_from_db(banonjoin)
     if datta[0][0] < 1:
-        print(Back.WHITE + Fore.BLUE + "A non-hackbanned user joined, they were not bananaed! :D")
+        print(Fore.BLUE + "A non-hackbanned user joined, they were not bananaed! :D")
     elif datta[0][0] > 0:
         print("user is hackbananaed")
-        print(Back.WHITE + Fore.RED + "A hackbanned user joined but was bananaed! :D")
+        print(Fore.RED + "A hackbanned user joined but was bananaed! :D")
         await client.ban(member)
-    print(Back.WHITE + Fore.BLUE + str(datta))
+    print(Fore.BLUE + str(datta))
 
 ## HACKBAN ##
 
