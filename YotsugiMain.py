@@ -20,7 +20,7 @@ from credentials import Prefix as prefix
 from credentials import LoggingChannel as loggingchannel
 from credentials import LoggingServer as logser
 ###
-bot_version = 'v0.6.3'
+bot_version = 'v0.7'
 bot_author = 'Kyousei#8357'
 bot_author_id = '145878866429345792'
 ###
@@ -395,6 +395,8 @@ async def flipcoin(ctx):
 
 @client.command()
 async def h(command = None):
+    global response
+    response = json.load(open('responses.json'))
     embed = discord.Embed(color = embed_color)
     embed.add_field(name="Hosting Guides", value="[Click Here](https://yotsugibot.readthedocs.io/en/latest/)", inline=False)
     embed.add_field(name="Commands List", value="[Click Here](https://yotsugibot.readthedocs.io/en/latest/Commands%20List)", inline=False)
@@ -405,291 +407,284 @@ async def h(command = None):
 
         #some code to check if the command is an actual command (depends on how you make commands)
     if command == prefix+'b':
-        embed = discord.Embed(title = "`" + prefix + "ban` / `" + prefix + "b`", description = "Bans the user from the server", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"ban @User/ID` or `"+ prefix +"b @User/UserID`", inline=True)
-        embed.add_field(name='User Permissions:', value='Ban Members', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Ban Members', inline=True)
+        embed = discord.Embed(title = response["Ban"][0]["Title"], description = response["Ban"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Ban"][0]["Usage"], value=response["Ban"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Ban"][0]["UPerms"], value=response["Ban"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Ban"][0]["BPerms"], value=response["Ban"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'ban':
-        embed = discord.Embed(title = prefix + "ban / " + prefix + "b", description = "Bans the user from the server", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"ban @User/ID` or `"+ prefix +"b @User/UserID`", inline=True)
-        embed.add_field(name='User Permissions:', value='Ban Members', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Ban Members', inline=True)
+        embed = discord.Embed(title = response["Ban"][0]["Title"], description = response["Ban"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Ban"][0]["Usage"], value=response["Ban"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Ban"][0]["UPerms"], value=response["Ban"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Ban"][0]["BPerms"], value=response["Ban"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
 
     if command == prefix+'kick':
-        embed = discord.Embed(title = prefix +"kick / "+ prefix +"k", description = "Kicks the user from the server", color = embed_color)
-        embed.add_field(name='Usage', value="`" + prefix +"kick @User/ID` or `" + prefix +"k @User/UserID`", inline=True)
-        embed.add_field(name='User Permissions:', value='Kick Members', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Kick Members', inline=True)
+        embed = discord.Embed(title = response["Kick"][0]["Title"], description = response["Kick"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Kick"][0]["Usage"], value=response["Kick"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Kick"][0]["UPerms"], value=response["Kick"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Kick"][0]["BPerms"], value=response["Kick"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'k':
-        embed = discord.Embed(title = prefix +"kick / "+ prefix +"k", description = "Kicks the user from the server", color = embed_color)
-        embed.add_field(name='Usage', value="`" + prefix +"kick @User/ID` or `" + prefix +"k @User/UserID`", inline=True)
-        embed.add_field(name='User Permissions:', value='Kick Members', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Kick Members', inline=True)
+        embed = discord.Embed(title = response["Kick"][0]["Title"], description = response["Kick"][0]["Description"], color = embed_color)
+        embed.add_field(name=response[""][0]["Usage"], value=response[""][0]["Usage1"], inline=True)
+        embed.add_field(name=response[""][0]["UPerms"], value=response[""][0]["UPerms1"], inline=True)
+        embed.add_field(name=response[""][0]["BPerms"], value=response[""][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'serverid':
-        embed = discord.Embed(title = prefix +"serverid / "+ prefix +"serid", description = "Show's the ID of the server.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"serverid` or `;serid`", inline=True)
-        embed.add_field(name='User Permissions:', value='**Bot Owner**', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
-        await client.say(embed = embed)
-        return
-
-    if command == prefix+'ud':
-        embed = discord.Embed(title = prefix +"ud", description = "Searches urban disctionary for the meaning of a word.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"ud lol`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
-        await client.say(embed = embed)
-        return
-
-    if command == prefix+'8ball':
-        embed = discord.Embed(title = prefix +"eightball / "+ prefix +"8ball", description = "8balls your question.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"eightball to be or not to be` or `"+ prefix +"8ball to be or not to be`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
-        await client.say(embed = embed)
-        return
-
-    if command == prefix+'eightball':
-        embed = discord.Embed(title = prefix +"eightball / "+ prefix +"8ball", description = "8balls your question.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"eightball to be or not to be` or `"+ prefix +"8ball to be or not to be`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["Server_ID"][0]["Title"], description = response["Server_ID"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Server_ID"][0]["Usage"], value=response["Server_ID"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Server_ID"][0]["UPerms"], value=response["Server_ID"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Server_ID"][0]["BPerms"], value=response["Server_ID"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'serid':
-        embed = discord.Embed(title = prefix +"serverid / "+ prefix +"serid", description = "Show's the ID of the server.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"serverid` or `"+ prefix +"serid`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["Server_ID"][0]["Title"], description = response["Server_ID"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Server_ID"][0]["Usage"], value=response["Server_ID"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Server_ID"][0]["UPerms"], value=response["Server_ID"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Server_ID"][0]["BPerms"], value=response["Server_ID"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
+    if command == prefix+'ud':
+        embed = discord.Embed(title = response["Ud"][0]["Title"], description = response["Ud"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Ud"][0]["Usage"], value=response["Ud"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Ud"][0]["UPerms"], value=response["Ud"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Ud"][0]["BPerms"], value=response["Ud"][0]["BPerms1"], inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == prefix+'8ball':
+        embed = discord.Embed(title = response["Eightball"][0]["Title"], description = response["Eightball"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Eightball"][0]["Usage"], value=response["Eightball"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Eightball"][0]["UPerms"], value=response["Eightball"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Eightball"][0]["BPerms"], value=response["Eightball"][0]["BPerms1"], inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == prefix+'eightball':
+        embed = discord.Embed(title = response["Eightball"][0]["Title"], description = response["Eightball"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Eightball"][0]["Usage"], value=response["Eightball"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Eightball"][0]["UPerms"], value=response["Eightball"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Eightball"][0]["BPerms"], value=response["Eightball"][0]["BPerms1"], inline=True)
+        await client.say(embed = embed)
+        return
+
+
     if command == prefix+'clear':
-        embed = discord.Embed(title = prefix +"clear / "+ prefix +"prune / "+ prefix +"purge", description = "Deletes `x` amount of messages.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"clear 5` or `"+ prefix +"prune 5` or `"+ prefix +"purge 5`", inline=True)
-        embed.add_field(name='User Permissions:', value='Manage Messages', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["Prune"][0]["Title"], description = response["Prune"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Prune"][0]["Usage"], value=response["Prune"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Prune"][0]["UPerms"], value=response["Prune"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Prune"][0]["BPerms"], value=response["Prune"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'prune':
-        embed = discord.Embed(title = prefix +"clear / "+ prefix +"prune / "+ prefix +"purge", description = "Deletes `x` amount of messages.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"clear 5` or `"+ prefix +"prune 5` or `"+ prefix +"purge 5`", inline=True)
-        embed.add_field(name='User Permissions:', value='Manage Messages', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["Prune"][0]["Title"], description = response["Prune"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Prune"][0]["Usage"], value=response["Prune"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Prune"][0]["UPerms"], value=response["Prune"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Prune"][0]["BPerms"], value=response["Prune"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'purge':
-        embed = discord.Embed(title = prefix +"clear / "+ prefix +"prune / "+ prefix +"purge", description = "Deletes `x` amount of messages.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"clear 5` or `"+ prefix +"prune 5` or `"+ prefix +"purge 5`", inline=True)
-        embed.add_field(name='User Permissions:', value='Manage Messages', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["Prune"][0]["Title"], description = response["Prune"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Prune"][0]["Usage"], value=response["Prune"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Prune"][0]["UPerms"], value=response["Prune"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Prune"][0]["BPerms"], value=response["Prune"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'mute':
-        embed = discord.Embed(title = prefix +"mute", description = "Mutes the user in the channel where command was ran.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"mute @User`", inline=True)
-        embed.add_field(name='User Permissions:', value='Mute Members', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Manage Channels', inline=True)
+        embed = discord.Embed(title = response["Mute"][0]["Title"], description = response["Mute"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Mute"][0]["Usage"], value=response["Mute"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Mute"][0]["UPerms"], value=response["Mute"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Mute"][0]["BPerms"], value=response["Mute"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'unmute':
-        embed = discord.Embed(title = prefix +"unmute", description = "Mutes the user in the channel where command was ran.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"unmute @User`", inline=True)
-        embed.add_field(name='User Permissions:', value='Mute Members', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Manage Channels', inline=True)
+        embed = discord.Embed(title = response["Unmute"][0]["Title"], description = response["Unmute"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Unmute"][0]["Usage"], value=response["Unmute"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Unmute"][0]["UPerms"], value=response["Unmute"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Unmute"][0]["BPerms"], value=response["Unmute"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'stats':
-        embed = discord.Embed(title = prefix +"stats", description = "Shows bot's statistics.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"stats`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["Stats"][0]["Title"], description = response["Stats"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Stats"][0]["Usage"], value=response["Stats"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Stats"][0]["UPerms"], value=response["Stats"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Stats"][0]["BPerms"], value=response["Stats"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'author':
-        embed = discord.Embed(title = prefix +"author", description = "Shows information about bot author.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"author`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["Author"][0]["Title"], description = response["Author"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Author"][0]["Usage"], value=response["Author"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Author"][0]["UPerms"], value=response["Author"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Author"][0]["BPerms"], value=response["Author"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'banlist':
-        embed = discord.Embed(title = prefix +"banlist", description = "Shows list of banned users for that server..", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"banlist`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["Banlist"][0]["Title"], description = response["Banlist"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Banlist"][0]["Usage"], value=response["Banlist"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Banlist"][0]["UPerms"], value=response["Banlist"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Banlist"][0]["BPerms"], value=response["Banlist"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'ping':
-        embed = discord.Embed(title = prefix +"ping", description = "Shows your ping to the bot..", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"ping`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
-        await client.say(embed = embed)
-        return
-
-    if command == prefix+'connect':
-        embed = discord.Embed(title = prefix +"connect", description = "Joins the voice channel.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"connect`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Connect', inline=True)
-        await client.say(embed = embed)
-        return
-
-    if command == prefix+'disconnect':
-        embed = discord.Embed(title = prefix +"disconnect", description = "Leaves the voice channel.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"disconnect`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Connect', inline=True)
+        embed = discord.Embed(title = response["Ping"][0]["Title"], description = response["Ping"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Ping"][0]["Usage"], value=response["Ping"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Ping"][0]["UPerms"], value=response["Ping"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Ping"][0]["BPerms"], value=response["Ping"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'channelid':
-        embed = discord.Embed(title = prefix +"channelid / "+ prefix +"chnlid", description = "Shows the channel ID the command was ran in.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"channelid` or `"+ prefix +"chnlid`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["Channel_ID"][0]["Title"], description = response["Channel_ID"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Channel_ID"][0]["Usage"], value=response["Channel_ID"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Channel_ID"][0]["UPerms"], value=response["Channel_ID"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Channel_ID"][0]["BPerms"], value=response["Channel_ID"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'chnlid':
-        embed = discord.Embed(title = prefix +"channelid / "+ prefix +"chnlid", description = "Shows the channel ID the command was ran in.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"channelid` or `"+ prefix +"chnlid`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["Channel_ID"][0]["Title"], description = response["Channel_ID"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Channel_ID"][0]["Usage"], value=response["Channel_ID"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Channel_ID"][0]["UPerms"], value=response["Channel_ID"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Channel_ID"][0]["BPerms"], value=response["Channel_ID"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'github':
-        embed = discord.Embed(title = prefix +"github", description = "Gives the link to GitHub.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"github`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["Github"][0]["Title"], description = response["Github"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Github"][0]["Usage"], value=response["Github"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Github"][0]["UPerms"], value=response["Github"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Github"][0]["BPerms"], value=response["Github"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'send':
-        embed = discord.Embed(title = prefix +"send", description = "Sends a message to a user.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"send @User Hi`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["Send"][0]["Title"], description = response["Send"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Send"][0]["Usage"], value=response["Send"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Send"][0]["UPerms"], value=response["Send"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Send"][0]["BPerms"], value=response["Send"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'shutdown':
-        embed = discord.Embed(title = prefix +"die / "+ prefix +"shutdown", description = "Boots the bot offline.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"shutdown` or `"+ prefix +"die`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["Shutdown"][0]["Title"], description = response["Shutdown"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Shutdown"][0]["Usage"], value=response["Shutdown"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Shutdown"][0]["UPerms"], value=response["Shutdown"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Shutdown"][0]["BPerms"], value=response["Shutdown"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'die':
-        embed = discord.Embed(title = prefix +"die / "+ prefix +"shutdown", description = "Boots the bot offline.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"shutdown` or `"+ prefix +"die`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["Shutdown"][0]["Title"], description = response["Shutdown"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Shutdown"][0]["Usage"], value=response["Shutdown"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Shutdown"][0]["UPerms"], value=response["Shutdown"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Shutdown"][0]["BPerms"], value=response["Shutdown"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'setrole':
-        embed = discord.Embed(title = prefix +"setrole / "+ prefix +"setrl", description = "Gives a role to a user.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"setrole @User Role-Name` or `"+ prefix +"setrl @User Role-Name`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["Set_Role"][0]["Title"], description = response["Set_Role"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Set_Role"][0]["Usage"], value=response["Set_Role"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Set_Role"][0]["UPerms"], value=response["Set_Role"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Set_Role"][0]["BPerms"], value=response["Set_Role"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'setrl':
-        embed = discord.Embed(title = prefix +"setrole / "+ prefix +"setrl", description = "Gives a role to a user.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"setrole @User Role-Name` or `"+ prefix +"setrl @User Role-Name`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["Set_Role"][0]["Title"], description = response["Set_Role"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Set_Role"][0]["Usage"], value=response["Set_Role"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Set_Role"][0]["UPerms"], value=response["Set_Role"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Set_Role"][0]["BPerms"], value=response["Set_Role"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'removerole':
-        embed = discord.Embed(title = prefix +"removerole / "+ prefix +"remrl", description = "Removes a role from the user.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"removerole @User Role-Name` or `"+ prefix +"remrl @User Role-Name`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["Remove_Role"][0]["Title"], description = response["Remove_Role"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Remove_Role"][0]["Usage"], value=response["Remove_Role"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Remove_Role"][0]["UPerms"], value=response["Remove_Role"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Remove_Role"][0]["BPerms"], value=response["Remove_Role"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'remrl':
-        embed = discord.Embed(title = prefix +"removerole / "+ prefix +"remrl`", description = "Removes a role from the user.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"removerole @User Role-Name` or `"+ prefix +"remrl @User Role-Name`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["Remove_Role"][0]["Title"], description = response["Remove_Role"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Remove_Role"][0]["Usage"], value=response["Remove_Role"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Remove_Role"][0]["UPerms"], value=response["Remove_Role"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Remove_Role"][0]["BPerms"], value=response["Remove_Role"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'flip':
-        embed = discord.Embed(title = prefix +"flip / "+ prefix +"flipcoin", description = "Flips the coin.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"flip` or `"+ prefix +"flipcoin`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages, Attach Files', inline=True)
+        embed = discord.Embed(title = response["Flip"][0]["Title"], description = response["Flip"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Flip"][0]["Usage"], value=response["Flip"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Flip"][0]["UPerms"], value=response["Flip"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Flip"][0]["BPerms"], value=response["Flip"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'roll':
-        embed = discord.Embed(title = prefix +"roll", description = "Rolls the dice in NdN format.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"roll 5d5`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["Roll"][0]["Title"], description = response["Roll"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Roll"][0]["Usage"], value=response["Roll"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Roll"][0]["UPerms"], value=response["Roll"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Roll"][0]["BPerms"], value=response["Roll"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'servers':
-        embed = discord.Embed(title = prefix +"servers", description = "Shows the list of servers the bot is in.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"servers`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["Servers"][0]["Title"], description = response["Servers"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Servers"][0]["Usage"], value=response["Servers"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Servers"][0]["UPerms"], value=response["Servers"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Servers"][0]["BPerms"], value=response["Servers"][0]["BPerms1"], inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == prefix+'server':
+        embed = discord.Embed(title = response["Server"][0]["Title"], description = response["Server"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Server"][0]["Usage"], value=response["Server"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Server"][0]["UPerms"], value=response["Server"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Server"][0]["BPerms"], value=response["Server"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'warn':
-        embed = discord.Embed(title = prefix +"warn", description = "Warns the user.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"warn @USer Rude`", inline=True)
-        embed.add_field(name='User Permissions:', value='Kick Members', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["Warn"][0]["Title"], description = response["Warn"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Warn"][0]["Usage"], value=response["Warn"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Warn"][0]["UPerms"], value=response["Warn"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Warn"][0]["BPerms"], value=response["Warn"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'h':
-        embed = discord.Embed(title = prefix +"h", description = "Shows the info about a command.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"h "+ prefix +"ban`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["Help"][0]["Title"], description = response["Help"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Help"][0]["Usage"], value=response["Help"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Help"][0]["UPerms"], value=response["Help"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Help"][0]["BPerms"], value=response["Help"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'hentai':
-        embed = discord.Embed(title = prefix +"hentai", description = "Posts hentai!", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"hentai`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages, Attach Files, Embed Links', inline=True)
+        embed = discord.Embed(title = response["Hentai"][0]["Title"], description = response["Hentai"][0]["Description"], color = embed_color)
+        embed.add_field(name='Usage', value=response["Hentai"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Hentai"][0]["UPerms"], value=response["Hentai"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Hentai"][0]["BPerms"], value=response["Hentai"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
@@ -702,26 +697,26 @@ async def h(command = None):
         return
 
     if command == prefix+'hackban':
-        embed = discord.Embed(title = prefix +"hb / " + prefix + "hackban", description = "Bans the user which is not in the server. **Must Be ID of the user**", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"hb 123123123123` or "+prefix+"`hackban 123123123123`", inline=True)
-        embed.add_field(name='User Permissions:', value='Ban Members', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Ban Members', inline=True)
+        embed = discord.Embed(title = response["Hackban"][0]["Title"], description = response["Hackban"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Hackban"][0]["Usage"], value=response["Hackban"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Hackban"][0]["UPerms"], value=response["Hackban"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Hackban"][0]["BPerms"], value=response["Hackban"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'hb':
-        embed = discord.Embed(title = prefix +"hb / " + prefix + "hackban", description = "Bans the user which is not in the server. **Must Be ID of the user**", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"hb 123123123123` or "+prefix+"`hackban 123123123123`", inline=True)
-        embed.add_field(name='User Permissions:', value='Ban Members', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Ban Members', inline=True)
+        embed = discord.Embed(title = response["Hackban"][0]["Title"], description = response["Hackban"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Hackban"][0]["Usage"], value=response["Hackban"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Hackban"][0]["UPerms"], value=response["Hackban"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Hackban"][0]["BPerms"], value=response["Hackban"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
-        
+
     if command == prefix+'serperm':
-        embed = discord.Embed(title = "`" + prefix + "serperm`", description = "Server permissions, provide no arguments to show the list of all permissions.", color = embed_color)
-        embed.add_field(name='Usage', value = "`" + prefix + "serperm` or `" + prefix + "serperm nsfw 0`", inline = True)
-        embed.add_field(name='User Permissions:', value = '**Administrator**', inline = True)
-        embed.add_field(name='Bot Permissions:', value = '`None`', inline = True)
+        embed = discord.Embed(title = response["Server_Permission"][0]["Title"], description = response["Server_Permission"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Server_Permission"][0]["Usage"], value = response["Server_Permission"][0]["Usage1"], inline = True)
+        embed.add_field(name=response["Server_Permission"][0]["UPerms"], value = response["Server_Permission"][0]["UPerms1"], inline = True)
+        embed.add_field(name=response["Server_Permission"][0]["BPerms"], value = response["Server_Permission"][0]["BPerms1"], inline = True)
         await client.say(embed = embed)
         return
 
