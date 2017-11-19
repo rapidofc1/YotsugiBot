@@ -1,0 +1,379 @@
+{
+	"Bounty": [
+		{
+			"Title": "bounty / add / remove / catch",
+			"Description": "`;bounty` alone checks the user's bounty. (Just mention their name, e.g.: `;bounty Puru`, `;bounty add` adds a new bounty with a reward, `;bounty remove` removes the user's bounty (**Administrator Permission**), `;bounty catch` catches the user with the bounty! This spends your currency!",
+			"Usage": "Usage",
+			"Usage1": "`bounty Puru`, `bounty add Puru 500`, `bounty remove Puru` or to catch someone `bounty catch Puru 200`",
+			"UPerms": "User Permissions",
+			"UPerms1": "`bounty remove` = **Administrator Permission**",
+			"BPerms": "Bot Permissions",
+			"BPerms1": "`None`"
+		}
+	],
+
+	"Ban": [
+		{
+			"Title": "`ban` / `b`",
+			"Description": "Bans the user from the server",
+			"Usage": "Usage",
+			"Usage1": "`ban @User/ID` or `b @User/UserID`",
+			"UPerms": "User Permissions",
+			"UPerms1": "Ban Members",
+			"BPerms": "Bot Permissions",
+			"BPerms1": "Ban Members, Manage Messages"
+		}
+	],
+
+	"Kick": [
+		{
+			"Title": "kick / k",
+			"Description": "Kicks the user from the server",
+			"Usage": "Usage",
+			"Usage1": "`kick @User/ID` or `k @User/UserID`",
+			"UPerms": "User Permissions",
+			"UPerms1": "Kick Members",
+			"BPerms": "Bot Permissions",
+			"BPerms1": "Kick Members"
+		}
+	],
+
+	"Server_ID": [
+		{
+			"Title": "serverid / serid",
+			"Description": "Show's the ID of the server.",
+			"Usage": "Usage",
+			"Usage1": "`serverid` or `serid`",
+			"UPerms": "User Permissions",
+			"UPerms1": "`None`",
+			"BPerms": "Bot Permissions",
+			"BPerms1": "`None`"
+		}
+	],
+
+	"Prune": [
+		{
+			"Title": "clear / prune / purge",
+			"Description": "Deletes `x` amount of messages.",
+			"Usage": "Usage",
+			"Usage1": "`clear 5` or `prune 5` or `purge 5`",
+			"UPerms": "User Permissions",
+			"UPerms1": "Manage Messages",
+			"BPerms": "Bot Permissions",
+			"BPerms1": "Manage Messages"
+		}
+	],
+
+	"Mute": [
+		{
+			"Title": "mute",
+			"Description": "Mutes the user from the channel where the command was ran in.",
+			"Usage": "Usage",
+			"Usage1": "`mute @User/UserID`",
+			"UPerms": "User Permissions",
+			"UPerms1": "Mute Members",
+			"BPerms": "Bot Permissions",
+			"BPerms1": "Manage Channels"
+		}
+	],
+
+	"Unmute": [
+		{
+			"Title": "unmute",
+			"Description": "Unmutes the user from the channel where the command was ran in.",
+			"Usage": "Usage",
+			"Usage1": "`unmute @User/UserID`",
+			"UPerms": "User Permissions",
+			"UPerms1": "Mute Members",
+			"BPerms": "Bot Permissions",
+			"BPerms1": "Manage Channels"
+		}
+	],
+
+	"Banlist": [
+		{
+			"Title": "banlist",
+			"Description": "Shows a list of banned users for that server.",
+			"Usage": "Usage",
+			"Usage1": "`banlist`",
+			"UPerms": "User Permissions",
+			"UPerms1": "`None`",
+			"BPerms": "Bot Permissions",
+			"BPerms1": "Ban Members"
+
+		}
+	],
+
+	"Channel_ID": [
+		{
+			"Title": "channelid / chnlid",
+			"Description": "Shows the channel ID the command was ran in.",
+			"Usage": "Usage",
+			"Usage1": "`channelid` or `chnlid`",
+			"UPerms": "User Permissions",
+			"UPerms1": "`None`",
+			"BPerms": "Bot Permissions",
+			"BPerms1": "`None`"
+		}
+	],
+
+	"Send": [
+		{
+			"Title": "send",
+			"Description": "Sends a message to an user with the bot.",
+			"Usage": "Usage",
+			"Usage1": "`send @User/UserID Hello!`",
+			"UPerms": "User Permissions",
+			"UPerms1": "**Bot Owner**",
+			"BPerms": "Bot Permissions",
+			"BPerms1": "`None`"
+		}
+	],
+
+	"Shutdown": [
+		{
+			"Title": "shutdown / die",
+			"Description": "Shuts down the bot.",
+			"Usage": "Usage",
+			"Usage1": "`shutdown` or `die`",
+			"UPerms": "User Permissions",
+			"UPerms1": "**Bot Owner**",
+			"BPerms": "Bot Permissions",
+			"BPerms1": "`None`"
+		}
+	],
+
+	"Set_Role": [
+		{
+			"Title": "setrole / setrl",
+			"Description": "Gives a role to the user",
+			"Usage": "Usage",
+			"Usage1": "`setrole @User/UserID Role` or `setrl @User/UserID Role`",
+			"UPerms": "User Permissions",
+			"UPerms1": "Manage Roles",
+			"BPerms": "Bot Permissions",
+			"BPerms1": "Manage Roles"
+		}
+	],
+
+	"Remove_Role": [
+		{
+			"Title": "removerole / remrl",
+			"Description": "Removes a role from the user.",
+			"Usage": "Usage",
+			"Usage1": "`removerole @User/UserID Role` or `remrl @User/UserID Role`",
+			"UPerms": "User Permissions",
+			"UPerms1": "Manage Roles",
+			"BPerms": "Bot Permissions",
+			"BPerms1": "Manage Roles"
+		}
+	],
+
+	"Warn": [
+		{
+			"Title": "warn",
+			"Description": "Warns the user.",
+			"Usage": "Usage",
+			"Usage1": "`warn @User/UserID You are not nice.",
+			"UPerms": "User Permissions",
+			"UPerms1": "Kick Members",
+			"BPerms": "Bot Permissions",
+			"BPerms1": "Kick Members"
+		}
+	],
+
+	"Hentai": [
+		{
+			"Title": "hentai",
+			"Description": "Posts hentai!",
+			"Usage": "Usage",
+			"Usage1": "`hentai`",
+			"UPerms": "User Permissions",
+			"UPerms1": "`None`",
+			"BPerms": "Bot Permissions",
+			"BPerms1": "Attach Files"
+		}
+	],
+
+	"Hackban": [
+		{
+			"Title": "hb / hackban",
+			"Description": "Bans the user which is not in the server. **Must Be ID of the user**",
+			"Usage": "Usage",
+			"Usage1": "`hb 234611045547769856` or `hackban 234611045547769856`",
+			"UPerms": "User Permissions",
+			"UPerms1": "Ban Members",
+			"BPerms": "Bot Permissions",
+			"BPerms1": "Ban Members"
+		}
+	],
+
+	"Server_Permission": [
+		{
+			"Title": "serperm",
+			"Description": "Server permissions, provide no arguments to show the list of all permissions.",
+			"Usage": "Usage",
+			"Usage1": "`serperm` or `serperm nsfw 0`",
+			"UPerms": "User Permissions",
+			"UPerms1": "Administrator",
+			"BPerms": "Bot Permissions",
+			"BPerms1": "`None`"
+		}
+	],
+
+	"Roll": [
+        {
+            "Title": "roll",
+            "Description": "Rolls the dice in NdN format.",
+            "Usage": "Usage",
+            "Usage1": "`roll 5d5`",
+            "UPerms": "User Permissions",
+            "UPerms1": "`None`",
+            "BPerms": "Bot Permissions",
+            "BPerms1": "`None`"
+        }
+    ],
+
+    "Eightball": [
+        {
+            "Title": "8ball / eightball",
+            "Description": "8balls your question.",
+            "Usage": "Usage",
+            "Usage1": "`8ball Will I ever get married?` or `eighball Will I ever get married?`",
+            "UPerms": "User Permissions",
+            "UPerms1": "`None`",
+            "BPerms": "Bot Permissions",
+            "BPerms1": "`None`"
+        }
+    ],
+
+    "Flip": [
+        {
+            "Title": "flip / flipcoin",
+            "Description": "Flips a Yotsugi coin.",
+            "Usage": "Usage",
+            "Usage1": "`flip`",
+            "UPerms": "User Permissions",
+            "UPerms1": "`None`",
+            "BPerms": "Bot Permissions",
+            "BPerms1": "`None`"
+        }
+    ],
+
+    "Roll_Slots": [
+        {
+            "Title": "rollslots",
+            "Description": "Rolls the Yotsugi slot machine.",
+            "Usage": "Usage",
+            "Usage1": "`rollslots`",
+            "UPerms": "User Permissions",
+            "UPerms1": "`None`",
+            "BPerms": "Bot Permissions",
+            "BPerms1": "`None`"
+        }
+    ],
+
+    "Help": [
+        {
+            "Title": "h",
+            "Description": "Sends a link to the Self-hosting guide and the commands page. Use before an existing command to learn a command and its usage.",
+            "Usage": "Usage",
+            "Usage1": "`h` or `h flip`",
+            "UPerms": "User Permissions",
+            "UPerms1": "`None`",
+            "BPerms": "Bot Permissions",
+            "BPerms1": "`None`"
+        }
+    ],
+
+    "Servers": [
+        {
+            "Title": "servers",
+            "Description": "Lists all servers the bot is in.",
+            "Usage": "Usage",
+            "Usage1": "`servers`",
+            "UPerms": "User Permissions",
+            "UPerms1": "`None`",
+            "BPerms": "Bot Permissions",
+            "BPerms1": "`None`"
+        }
+    ],
+
+    "Stats": [
+        {
+            "Title": "stats",
+            "Description": "Shows the statistics of the bot.",
+            "Usage": "Usage",
+            "Usage1": "`stats`",
+            "UPerms": "User Permissions",
+            "UPerms1": "`None`",
+            "BPerms": "Bot Permissions",
+            "BPerms1": "`None`"
+        }
+    ],
+
+    "Author": [
+        {
+            "Title": "author",
+            "Description": "Shows info about the author.",
+            "Usage": "Usage",
+            "Usage1": "`author`",
+            "UPerms": "User Permissions",
+            "UPerms1": "`None`",
+            "BPerms": "Bot Permissions",
+            "BPerms1": "`None`"
+        }
+    ],
+
+    "Ping": [
+        {
+            "Title": "ping",
+            "Description": "Shows your ping to the bot then to Discord.",
+            "Usage": "Usage",
+            "Usage1": "`ping`",
+            "UPerms": "User Permissions",
+            "UPerms1": "`None`",
+            "BPerms": "Bot Permissions",
+            "BPerms1": "`None`"
+        }
+    ],
+
+    "Github": [
+        {
+            "Title": "github",
+            "Description": "Posts a link to Yotsugi's GitHub.",
+            "Usage": "Usage",
+            "Usage1": "`github`",
+            "UPerms": "User Permissions",
+            "UPerms1": "`None`",
+            "BPerms": "Bot Permissions",
+            "BPerms1": "`None`"
+        }
+    ],
+
+    "Ud": [
+        {
+            "Title": "ud",
+            "Description": "Searches your word on Urban Dictionary.",
+            "Usage": "Usage",
+            "Usage1": "`ud Discord`",
+            "UPerms": "User Permissions",
+            "UPerms1": "`None`",
+            "BPerms": "Bot Permissions",
+            "BPerms1": "`None`"
+        }
+    ],
+
+    "Safebooru": [
+        {
+            "Title": "safebooru",
+            "Description": "Searches for images with a given tag on Safebooru.",
+            "Usage": "Usage",
+            "Usage1": "`safebooru Cute`",
+            "UPerms": "User Permissions",
+            "UPerms1": "`None`",
+            "BPerms": "Bot Permissions",
+            "BPerms1": "`None`"
+        }
+    ]
+}
