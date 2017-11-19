@@ -9,6 +9,7 @@ import requests
 from discord.ext.commands import Bot
 from discord.ext import commands
 import pickle
+import json
 import colorama
 from colorama import Fore, Back, Style
 import os
@@ -20,7 +21,7 @@ from credentials import Prefix as prefix
 from credentials import LoggingChannel as loggingchannel
 from credentials import LoggingServer as logser
 ###
-bot_version = 'v0.7'
+bot_version = 'v0.7.1'
 bot_author = 'Kyousei#8357'
 bot_author_id = '145878866429345792'
 ###
