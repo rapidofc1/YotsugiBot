@@ -73,16 +73,6 @@ async def send(ctx, member : discord.Member, *, message):
             return await client.say(":x: Insufficient permissions!")
             print("Command Failed To |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]\nReason: " + Fore.YELLOW + "Insufficient Permissions! Both user and bot need Ban Members permission!")
 
-
-@client.command
-async def h(command = None):
-    if not command:
-        #do normal help command
-        return
-
-    #some code to check if the command is an actual command (depends on how you make commands)
-    return
-
  
 @client.command(pass_context = True)
 async def ping(ctx):
@@ -92,14 +82,14 @@ async def ping(ctx):
     await client.edit_message(pingms, "Pong! :ping_pong:  The ping time is `%dms`" % ping)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
  
-#command1
+
 @client.command(pass_context = True)
 async def invite(ctx):
     embed = discord.Embed(title = "Here are invite links:", description = "Invite me to your server with this link: https://discordapp.com/oauth2/authorize?client_id=331766751765331969&scope=bot&permissions=66186303", color = embed_color)
     return await client.say(embed = embed)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
  
-#command2
+
 @client.command(pass_context = True, no_pm = True)
 async def banlist(ctx):
     x = await client.get_bans(ctx.message.server)
@@ -108,7 +98,7 @@ async def banlist(ctx):
     return await client.say(embed = embed)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
  
-#command3
+
 @client.command(pass_context=True, no_pm = True)
 async def connect(ctx):
     if client.is_voice_connected(ctx.message.server):
@@ -118,7 +108,7 @@ async def connect(ctx):
     vc = await client.join_voice_channel(voice_channel)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
  
-#command4
+
 @client.command(pass_context = True, no_pm = True)
 async def disconnect(ctx):
     for x in client.voice_clients:
@@ -126,7 +116,7 @@ async def disconnect(ctx):
             return await x.disconnect()
             print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
         
-#command6
+
 @client.command(pass_context=True, no_pm = True, aliases=['prune', 'purge'])       
 async def clear(ctx, number):
     embed = discord.Embed(description = ":x: Insufficient permissions! You require **Manage Messages** permission in order to clear messages!", color = 0xF00000)
@@ -141,14 +131,14 @@ async def clear(ctx, number):
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
 
 
-#command8
+
 @client.command(pass_context = True, no_pm = True)
 async def author(ctx):
     embed = discord.Embed(title = "Yotsugi Bot Author:", description = "Name: **" + bot_author + "**  \nJoined Discord: **07.02.2016  1:10 PM**  \n  **ID**: 145878866429345792  \n**Email**: yotsugibot@gmail.com  \nSay **;h** for commands.", color = embed_color)
     return await client.say(embed = embed)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
 
-#command9
+
 @client.command(pass_context = True, no_pm = True, aliases=['b'])
 async def ban(ctx, *, member : discord.Member = None):
     if not ctx.message.author.server_permissions.ban_members:
@@ -170,7 +160,7 @@ async def ban(ctx, *, member : discord.Member = None):
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
 
 
-#command10
+
 @client.command(pass_context = True, no_pm = True, aliases=['k'])
 async def kick(ctx, *, member : discord.Member = None):
     if not ctx.message.author.server_permissions.kick_members:
@@ -190,7 +180,7 @@ async def kick(ctx, *, member : discord.Member = None):
     return await client.say(embed = embed)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
 	
-#command12
+
 @client.command(pass_context = True, no_pm = True)
 async def mute(ctx, *, member : discord.Member):
     if not ctx.message.author.server_permissions.mute_members:
@@ -201,7 +191,6 @@ async def mute(ctx, *, member : discord.Member):
     await client.say("**%s** has been muted!"%member.mention)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
 
-#command13
 @client.command(pass_context = True, description='Unmutes the muted members.', no_pm = True)
 async def unmute(ctx, *, member : discord.Member):
     if not ctx.message.author.server_permissions.mute_members:
@@ -212,7 +201,7 @@ async def unmute(ctx, *, member : discord.Member):
     await client.say("**%s** has been unmuted!"%member.mention)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
 
-#command14
+
 answers = ["My source say no.", "I completely disagree.", "No way in hell!", "Sure! :D", "Why not?", "Why would you say that?", "When life gives you lemons, throw them at people!", "HA, You wish!", "Keep dreaming!", "Does a green light mean go?", "Red is supposed to stop you, but your magic is TOO strong! :sweat:", "Power outage!??! WHAT ABOUT MY WIFI!??!!", "Hmmm.. this is hard", "lol, just lol.", "Cleverbot is no match for me! Haahahaha", "The chances of that happening are equal to the chances of shivaco getting a girlfriend. Null!", "There's an admin watching :scream:", "Ask me tomorrow :zzz:", "No... I mean yes... Well... Ask again later"]
 
 @client.command(description='Decides for you.', aliases=['8ball'])
@@ -231,7 +220,7 @@ async def now(ctx):
     await client.say(embed=embed)
 
 
-#command20
+
 @client.command()
 async def roll(dice : str):
     """--- Rolled with NdN format. Example: 5d3"""
@@ -251,7 +240,7 @@ async def roll(dice : str):
     await client.say(embed = embed)
 
 
-#command17
+
 @client.command(pass_context = True)
 async def github(ctx):
     """  ---Link to Github"""
@@ -267,16 +256,19 @@ async def license(ctx):
 	print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
 
 	
-#command18
-@client.command(pass_context = True, no_pm = True)
+
+@client.command(pass_context = True)
 async def servers(ctx):
-    x = '`\n`'.join([str(server) for server in client.servers])
+    x = ', '.join([str(server) for server in client.servers])
     y = len(client.servers)
     print(x)
-    embed = discord.Embed(title = "Servers: " + str(y), description = x, color = embed_color)
-    await client.say(embed = embed)
+    if y > 40:
+        embed = discord.Embed(title = "Servers: " + str(y), description = "```json\nRetracted because there's more than 40 servers!```", color = 0xFFFFF)
+        return await client.say(embed = embed)
+    elif y < 40:
+        embed = discord.Embed(title = "Servers: " + str(y), description = "```json\n" + x + "```", color = 0xFFFFF)
+        return await client.say(embed = embed)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
-
 
 #Stats Command
 @client.command(pass_context = True, no_pm = False)
@@ -299,7 +291,7 @@ async def shutdown(ctx):
     if owner == ctx.message.author.id:
         embed = discord.Embed(description = "Shutting Down...", color = embed_color)
         await client.say(embed = embed)
-        print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran: " + prefix + aliases + "\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
+        print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran: " + prefix + "\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
         await client.logout()
         
 
