@@ -19,7 +19,7 @@ from credentials import Owners as owner
 from credentials import EmbedColor as embed_color
 from credentials import Prefix as prefix
 from credentials import LoggingChannel as loggingchannel
-from credentials import LoggingServer as logser
+from credentials import LoggingServer as logserver
 ###
 bot_version = 'v1'
 bot_author = 'Kyousei#8357'
@@ -65,6 +65,11 @@ async def on_ready():
 
 startup_extensions["data.Modules.Bounty.Bounties", "data.Modules.XP.EXP", "data.Modules.XP.GiXP", "data.Modules.XP.NewEXPStats"]
 
+for cog in startup_extensions:
+	try:
+		client.load_extension(cog)
+	except Exception as error:
+		print(str(error))
 
 @client.command(pass_context = True, no_pm = True)
 async def send(ctx, member : discord.Member, *, message):
@@ -787,7 +792,7 @@ async def on_server_role_create(role, channel = loggingchannel):
     	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
     	await client.send_message(discord.Object(id=loggingchannel), embed=embed)
     else:
-	   return
+	return
     await client.process_commands(role)
 
 
@@ -800,7 +805,7 @@ async def on_server_role_delete(role, channel = loggingchannel):
     	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
     	await client.send_message(discord.Object(id=loggingchannel), embed=embed)
     else:
-	   return
+	return
     await client.process_commands(role)
 
 
@@ -814,7 +819,7 @@ async def on_member_ban(member, channel = loggingchannel):
     	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
     	await client.send_message(discord.Object(id=loggingchannel), embed=embed)
     else:
-	   return
+	return
     await client.process_commands(member)
 
 
@@ -829,7 +834,7 @@ async def on_message_edit(message, after, channel = loggingchannel):
     	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
     	await client.send_message(discord.Object(id=loggingchannel), embed = embed)
     else:
-	   return
+	return
     await client.process_commands(message)
 ##### LOGGING #####
 
