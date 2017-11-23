@@ -65,6 +65,12 @@ async def on_ready():
 
 startup_extensions["data.Modules.Bounty.Bounties", "data.Modules.XP.EXP", "data.Modules.XP.GiXP", "data.Modules.XP.NewEXPStats"]
 
+for cog in startup_extensions:
+	try:
+		client.load_extension(cog)
+	except Exception as error:
+		print(str(error))
+
 
 @client.command(pass_context = True, no_pm = True)
 async def send(ctx, member : discord.Member, *, message):
