@@ -9,7 +9,7 @@ import asyncio
 class NewEXPStats():
 	def __init__(self, client):
 		self.client = client
-
+	
 	async def on_message(message):
 		def mkifno(mk):
 			c.execute(mk)
@@ -58,4 +58,5 @@ class NewEXPStats():
 		elif hsx[0][0] == 0:
 			mkifno(mk)
 
-    await self.client.process_commands(message)
+def setup(client):
+	client.add_cog(NewEXPStats(client))
