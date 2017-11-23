@@ -2,11 +2,11 @@
 	"Bounty": [
 		{
 			"Title": "bounty / add / remove / catch",
-			"Description": "`;bounty` alone checks the user's bounty. (Just mention their name, e.g.: `;bounty Puru`, `;bounty add` adds a new bounty with a reward, `;bounty remove` removes the user's bounty (**Administrator Permission**), `;bounty catch` catches the user with the bounty! This spends your currency!",
+			"Description": "`;bounty` alone checks the user's bounty. (Just mention their name, e.g.: `;bounty Puru`.\n`;bounty add` adds a new bounty with a reward.\n`;bounty remove` removes the user's bounty (**Bot Owner**).\n`;bounty catch` catches the user with the bounty! This spends your currency!\nIf their name includes spaces, put it in quotes! (e.g. ;bounty add ''Cool name'' 500)",
 			"Usage": "Usage",
-			"Usage1": "`bounty Puru`, `bounty add Puru 500`, `bounty remove Puru` or to catch someone `bounty catch Puru 200`",
+			"Usage1": "`bounty Puru`\n`bounty add Puru 500`\n`bounty remove Puru`\nOr to catch someone `bounty catch Puru 200`",
 			"UPerms": "User Permissions",
-			"UPerms1": "`bounty remove` = **Administrator Permission**",
+			"UPerms1": "`bounty remove` = **Bot Owner**",
 			"BPerms": "Bot Permissions",
 			"BPerms1": "`None`"
 		}
