@@ -18,7 +18,7 @@ You can support Yotsugi bot on my Patreon - <https://www.patreon.com/YotsugiBot>
 - Bans the user from the server. **Requires Ban Members Permission.** | e.g. `;ban @Puru` |
 
 **`;kick`** or **`;k`**
-- Sets a role for a given user. **Requires Kick Members Permission.** | e.g. `;kick @Puru` |
+- Kicks the user from the server. **Requires Kick Members Permission.** | e.g. `;kick @Puru` |
 
 **`;mute`**
 - Mutes a user from the Channel. **Requires Mute Members Permission.** | e.g. `;mute @Puru` |
@@ -61,7 +61,7 @@ You can support Yotsugi bot on my Patreon - <https://www.patreon.com/YotsugiBot>
 
 ## Bot Info
 **`;h`** 
-- sends a link to the Self-hosting guide and the commands page. Use before an existing command to learn a command and its usage | e.g. `;h` or `;h ;flip` |
+- Sends a link to the Self-hosting guide and the commands page. Use before an existing command to learn a command and its usage | e.g. `;h` or `;h ;flip` |
 
 **`;servers`** 
 - Lists all servers the bot is in. | e.g. `;servers` |
@@ -123,4 +123,3 @@ You can support Yotsugi bot on my Patreon - <https://www.patreon.com/YotsugiBot>
 - Sets the bot's playing status | e.g. `;setgame a game` |
 
 ###### [Back to Top](#table-of-contents)
-

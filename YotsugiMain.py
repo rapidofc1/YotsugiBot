@@ -21,7 +21,7 @@ from credentials import Prefix as prefix
 from credentials import LoggingChannel as loggingchannel
 from credentials import LoggingServer as logser
 ###
-bot_version = 'v0.7.1'
+bot_version = 'v1'
 bot_author = 'Kyousei#8357'
 bot_author_id = '145878866429345792'
 ###
@@ -37,12 +37,12 @@ c = conn.cursor()
 def create_table():
     c.execute('CREATE TABLE IF NOT EXISTS Hackbans(user_id TEXT, server_id TEXT)')
     c.execute('CREATE TABLE IF NOT EXISTS Permissions(nsfw_is_enabled INT, server_id TEXT)')
+    c.execute('CREATE TABLE IF NOT EXISTS UserData(user_id TEXT, user_name TEXT, level TEXT, exp TEXT, description TEXT, reputation TEXT, currency TEXT)')
+    c.execute('CREATE TABLE IF NOT EXISTS Bounties(user TEXT, username TEXT, reward TEXT)')
 
 create_table()
 
 ## DATABASE ##
-
- 
 @client.event
 async def on_ready():
     print("Logging In...")
@@ -63,6 +63,8 @@ async def on_ready():
     print("\n       Client Name: {}".format(client.user.name) +"\n       Client ID: {}".format(client.user.id) + "\n       Prefix: {}".format(prefix) + "\n       Embed Color: {}".format(embed_color) + "\n       Version: {}".format(bot_version) + "\n       Owner ID: {}".format(owner))
     await client.change_presence(game=discord.Game(name=''))
 
+startup_extensions["data.Modules.Bounty.Bounties", "data.Modules.XP.EXP", "data.Modules.XP.GiXP", "data.Modules.XP.NewEXPStats"]
+
 
 @client.command(pass_context = True, no_pm = True)
 async def send(ctx, member : discord.Member, *, message):
@@ -73,7 +75,6 @@ async def send(ctx, member : discord.Member, *, message):
             return await client.say(":x: Insufficient permissions!")
             print("Command Failed To |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]\nReason: " + Fore.YELLOW + "Insufficient Permissions! Both user and bot need Ban Members permission!")
 
- 
 @client.command(pass_context = True)
 async def ping(ctx):
     pingtime = time.time()
@@ -81,14 +82,14 @@ async def ping(ctx):
     ping = (time.time() - pingtime) * 1000
     await client.edit_message(pingms, "Pong! :ping_pong:  The ping time is `%dms`" % ping)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
- 
+
 
 @client.command(pass_context = True)
 async def invite(ctx):
     embed = discord.Embed(title = "Here are invite links:", description = "Invite me to your server with this link: https://discordapp.com/oauth2/authorize?client_id=331766751765331969&scope=bot&permissions=66186303", color = embed_color)
     return await client.say(embed = embed)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
- 
+
 
 @client.command(pass_context = True, no_pm = True)
 async def banlist(ctx):
@@ -97,7 +98,7 @@ async def banlist(ctx):
     embed = discord.Embed(title = "List of Banned Members", description = x, color = embed_color)
     return await client.say(embed = embed)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
- 
+
 
 @client.command(pass_context=True, no_pm = True)
 async def connect(ctx):
@@ -107,7 +108,7 @@ async def connect(ctx):
     voice_channel = author.voice_channel
     vc = await client.join_voice_channel(voice_channel)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
- 
+
 
 @client.command(pass_context = True, no_pm = True)
 async def disconnect(ctx):
@@ -115,9 +116,8 @@ async def disconnect(ctx):
         if(x.server == ctx.message.server):
             return await x.disconnect()
             print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
-        
 
-@client.command(pass_context=True, no_pm = True, aliases=['prune', 'purge'])       
+@client.command(pass_context=True, no_pm = True, aliases=['prune', 'purge'])
 async def clear(ctx, number):
     embed = discord.Embed(description = ":x: Insufficient permissions! You require **Manage Messages** permission in order to clear messages!", color = 0xF00000)
     if not ctx.message.author.server_permissions.manage_messages:
@@ -129,7 +129,6 @@ async def clear(ctx, number):
         mgs.append(x)
     await client.delete_messages(mgs)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
-
 
 
 @client.command(pass_context = True, no_pm = True)
@@ -179,7 +178,7 @@ async def kick(ctx, *, member : discord.Member = None):
     embed = discord.Embed(description = "**%s** has been kicked."%member.name, color = 0xF00000)
     return await client.say(embed = embed)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
-	
+
 
 @client.command(pass_context = True, no_pm = True)
 async def mute(ctx, *, member : discord.Member):
@@ -190,6 +189,7 @@ async def mute(ctx, *, member : discord.Member):
     await client.edit_channel_permissions(ctx.message.channel, member, overwrite)
     await client.say("**%s** has been muted!"%member.mention)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
+
 
 @client.command(pass_context = True, description='Unmutes the muted members.', no_pm = True)
 async def unmute(ctx, *, member : discord.Member):
@@ -247,15 +247,15 @@ async def github(ctx):
     embed = discord.Embed(description = "Yotsugi Github can be found here: https://github.com/YotsugiBot", color = embed_color)
     await client.say(embed = embed)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
-	
-	
+
+
 @client.command(pass_context = True)
 async def license(ctx):
 	embed = discord.Embed(description = "Read the License [here](https://github.com/Kyousei/YotsugiBot/blob/master/LICENSE.md)", color = embed_color)
 	await client.say(embed = embed)
 	print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
 
-	
+
 
 @client.command(pass_context = True)
 async def servers(ctx):
@@ -270,7 +270,7 @@ async def servers(ctx):
         return await client.say(embed = embed)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
 
-#Stats Command
+
 @client.command(pass_context = True, no_pm = False)
 async def stats(ctx):
     second = time.time() - start_time
@@ -293,7 +293,7 @@ async def shutdown(ctx):
         await client.say(embed = embed)
         print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran: " + prefix + "\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
         await client.logout()
-        
+
 
 @client.command(pass_context = True, no_pm = True, aliases=['serid'])
 async def serverid(ctx, *, member = discord.Member):
@@ -350,7 +350,7 @@ async def ud(*msg):
     response = requests.get(api, params=[("term", word)]).json()
     embed = discord.Embed(description = "No results found!", color = 0xFF0000)
     if len(response["list"]) == 0: return await client.say(embed = embed)
-    
+
     embed = discord.Embed(title = "Word", description = word, color = embed_color)
     embed.add_field(name = "Top definition:", value = response['list'][0]['definition'])
     embed.add_field(name = "Examples:", value = response['list'][0]["example"])
@@ -684,8 +684,63 @@ async def h(command = None):
     if command == prefix+'now':
         embed = discord.Embed(title = prefix +"now", description = "Shows the date, time where bot is located.", color = embed_color)
         embed.add_field(name='Usage', value="`"+ prefix +"now`", inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == prefix+'warn':
+        embed = discord.Embed(title = response["Warn"][0]["Title"], description = response["Warn"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Warn"][0]["Usage"], value=response["Warn"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Warn"][0]["UPerms"], value=response["Warn"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Warn"][0]["BPerms"], value=response["Warn"][0]["BPerms1"], inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == prefix+'h':
+        embed = discord.Embed(title = response["Help"][0]["Title"], description = response["Help"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Help"][0]["Usage"], value=response["Help"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Help"][0]["UPerms"], value=response["Help"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Help"][0]["BPerms"], value=response["Help"][0]["BPerms1"], inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == prefix+'hentai':
+        embed = discord.Embed(title = response["Hentai"][0]["Title"], description = response["Hentai"][0]["Description"], color = embed_color)
+        embed.add_field(name='Usage', value=response["Hentai"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Hentai"][0]["UPerms"], value=response["Hentai"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Hentai"][0]["BPerms"], value=response["Hentai"][0]["BPerms1"], inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == prefix+'prof':
+        embed = discord.Embed(title = prefix +"profile / " + prefix + "prof", description = "Shows your EXP stats.", color = embed_color)
+        embed.add_field(name='Usage', value="`"+ prefix +"exp` or "+prefix+"`xp`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages, Attach Files, Embed Links', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == prefix+'profile':
+        embed = discord.Embed(title = prefix +"profile / " + prefix + "prof", description = "Shows your EXP stats.", color = embed_color)
+        embed.add_field(name='Usage', value="`"+ prefix +"exp` or "+prefix+"`xp`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == prefix+'setdesc':
+        embed = discord.Embed(title = prefix +"setdesc / " + prefix + "setdescription", description = "Changes your `;sexp` description to whatever you put.\nUp to 50 characters!\nTo see how much characters your description has, do `;chrlngtcnter My cool description`.", color = embed_color)
+        embed.add_field(name='Usage', value="`"+ prefix +"setdesc My cool description` or "+prefix+"`setdescription My cool description`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == prefix+'setdescription':
+        embed = discord.Embed(title = prefix +"setdesc / " + prefix + "setdescription", description = "Changes your `;sexp` description to whatever you put.\nUp to 50 characters!\nTo see how much characters your description has, do `;chrlngtcnter My cool description`.", color = embed_color)
+        embed.add_field(name='Usage', value="`"+ prefix +"setdesc My cool description` or "+prefix+"`setdescription My cool description`", inline=True)
+
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
         await client.say(embed = embed)
         return
 
@@ -710,6 +765,13 @@ async def h(command = None):
         embed.add_field(name=response["Server_Permission"][0]["Usage"], value = response["Server_Permission"][0]["Usage1"], inline = True)
         embed.add_field(name=response["Server_Permission"][0]["UPerms"], value = response["Server_Permission"][0]["UPerms1"], inline = True)
         embed.add_field(name=response["Server_Permission"][0]["BPerms"], value = response["Server_Permission"][0]["BPerms1"], inline = True)
+        
+    if command == prefix+'bounty':
+        bntydt = json.load(open('responses.json'))
+        embed = discord.Embed(title = prefix + bntydt["Bounty"][0]["Title"], description = bntydt["Bounty"][0]["Description"], color = embed_color)        
+        embed.add_field(name=bntydt["Bounty"][0]["Usage"], value=bntydt["Bounty"][0]["Usage1"], inline=True)
+        embed.add_field(name=bntydt["Bounty"][0]["UPerms"], value=bntydt["Bounty"][0]["UPerms1"], inline=True)
+        embed.add_field(name=bntydt["Bounty"][0]["BPerms"], value=bntydt["Bounty"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
@@ -718,49 +780,56 @@ async def h(command = None):
 
 @client.event
 async def on_server_role_create(role, channel = loggingchannel):
-    if logser == message.server.id:
+    if logserver == message.server.id:
     	embed = discord.Embed(title = "New Role Created!", color = embed_color)
     	embed.add_field(name="Role Name: ", value=role.name, inline=True)
     	embed.add_field(name="Server:", value=message.server.name, inline=False)
     	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
     	await client.send_message(discord.Object(id=loggingchannel), embed=embed)
-    elif logser != message.server.id: print("")
+    else:
+	   return
+    await client.process_commands(role)
 
 
 @client.event
 async def on_server_role_delete(role, channel = loggingchannel):
-    if logser == message.server.id:
+    if logserver == message.server.id:
     	embed = discord.Embed(title = "Role Deleted", color = 0xF00000)
     	embed.add_field(name="Role Name: ", value=role.name, inline=True)
     	embed.add_field(name="Server:", value=message.server.name, inline=False)
     	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
     	await client.send_message(discord.Object(id=loggingchannel), embed=embed)
-    elif logser != message.server.id: print("")
+    else:
+	   return
+    await client.process_commands(role)
 
 
 @client.event
 async def on_member_ban(member, channel = loggingchannel):
-    if logser == message.server.id:
+    if logserver == message.server.id:
     	embed = discord.Embed(title = "User Banned!", color = 0xF00000)
     	embed.set_author(name=member.name, url=member.avatar_url, icon_url=member.avatar_url)
     	embed.add_field(name="User: ", value=member.name + "#" + member.discriminator, inline=True)
     	embed.add_field(name="Server:", value=message.server.name, inline=False)
     	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
     	await client.send_message(discord.Object(id=loggingchannel), embed=embed)
-    elif logser != message.server.id: print("")
+    else:
+	   return
+    await client.process_commands(member)
 
 
 @client.event
 async def on_message_edit(message, after, channel = loggingchannel):
-    if logser == message.server.id:
-    	embed = discord.Embed(title = "Message Edited!", description = "In channel: **" + str(message.channel) + "**", color = embed_color)
+    if logserver == message.server.id:
+    	embed = discord.Embed(title = "Message Edited!", description = "In channel: <#" + message.channel.id + ">", color = embed_color)
     	embed.add_field(name="New Content: ", value=after.content, inline=True)
     	embed.add_field(name="Old Content: ", value=message.content, inline=False)
-    	embed.add_field(name="User: ", value=str(message.author), inline=False)
+    	embed.add_field(name="User: ", value=message.author.name + "#" + message.author.discriminator, inline=False)
     	embed.add_field(name="Server:", value=message.server.name, inline=False)
     	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
     	await client.send_message(discord.Object(id=loggingchannel), embed = embed)
-    elif logser != message.server.id: print("")
+    else:
+	   return
     await client.process_commands(message)
 ##### LOGGING #####
 
@@ -853,13 +922,9 @@ def data_entry(hkban):
 async def hackban(ctx, *, id: str):
     server_id = ctx.message.server.id
     hkban = "INSERT INTO Hackbans (user_id, server_id) VALUES ('" + id + "', '" + server_id + "')"
-    if ctx.message.author.server_permissions.administrator:
-        data_entry(hkban)
-        embed = discord.Embed(description = "Successfully Hackbanned: " + str(id), color = embed_color)
-        await client.say(embed = embed)
-    else:
-        embed = discord.Embed(description = "Insufficient Permissions!", color = 0xFF0000)
-        await client.say(embed = embed)
+    data_entry(hkban)
+    embed = discord.Embed(description = "Successfully Hackbanned: " + id, color = embed_color)
+    await client.say("Hackbanned: " + id)
 
 
 def read_from_db(banonjoin):
@@ -883,8 +948,6 @@ async def on_member_join(member):
     print(Fore.BLUE + str(datta))
 
 ## HACKBAN ##
-
-
 
 
 ######################## Permissions ########################
@@ -1198,7 +1261,7 @@ async def hentai(ctx):
         if hendata[0][1] < 1:
             embed = discord.Embed(description = "NSFW is disabled!", color = 0xFF0000)
             await client.say(embed = embed)
-        elif hendata[0][1] > 0: 
+        elif hendata[0][1] > 0:
             embed = discord.Embed(description = "Here's your hentai, " + ctx.message.author.mention + "!", color = embed_color)
             embed.set_image(url = random.choice(hentai_images))
             await client.say(embed = embed)
