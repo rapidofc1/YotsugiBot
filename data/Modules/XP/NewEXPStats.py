@@ -9,7 +9,7 @@ import asyncio
 class NewEXPStats():
 	def __init__(self, client):
 		self.client = client
-
+	
 	async def on_message(message):
 		def mkifno(mk):
 			c.execute(mk)

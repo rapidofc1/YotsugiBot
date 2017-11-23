@@ -70,6 +70,7 @@ for cog in startup_extensions:
 		client.load_extension(cog)
 	except Exception as error:
 		print(str(error))
+    
 
 @client.command(pass_context = True, no_pm = True)
 async def send(ctx, member : discord.Member, *, message):
