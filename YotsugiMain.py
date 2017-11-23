@@ -43,9 +43,6 @@ def create_table():
 create_table()
 
 ## DATABASE ##
-
-
-
 @client.event
 async def on_ready():
     print("Logging In...")
@@ -78,7 +75,6 @@ async def send(ctx, member : discord.Member, *, message):
             return await client.say(":x: Insufficient permissions!")
             print("Command Failed To |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]\nReason: " + Fore.YELLOW + "Insufficient Permissions! Both user and bot need Ban Members permission!")
 
-
 @client.command(pass_context = True)
 async def ping(ctx):
     pingtime = time.time()
@@ -86,6 +82,7 @@ async def ping(ctx):
     ping = (time.time() - pingtime) * 1000
     await client.edit_message(pingms, "Pong! :ping_pong:  The ping time is `%dms`" % ping)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
+
 
 @client.command(pass_context = True)
 async def invite(ctx):
@@ -684,6 +681,36 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
+    if command == prefix+'now':
+        embed = discord.Embed(title = prefix +"now", description = "Shows the date, time where bot is located.", color = embed_color)
+        embed.add_field(name='Usage', value="`"+ prefix +"now`", inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == prefix+'warn':
+        embed = discord.Embed(title = response["Warn"][0]["Title"], description = response["Warn"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Warn"][0]["Usage"], value=response["Warn"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Warn"][0]["UPerms"], value=response["Warn"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Warn"][0]["BPerms"], value=response["Warn"][0]["BPerms1"], inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == prefix+'h':
+        embed = discord.Embed(title = response["Help"][0]["Title"], description = response["Help"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Help"][0]["Usage"], value=response["Help"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Help"][0]["UPerms"], value=response["Help"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Help"][0]["BPerms"], value=response["Help"][0]["BPerms1"], inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == prefix+'hentai':
+        embed = discord.Embed(title = response["Hentai"][0]["Title"], description = response["Hentai"][0]["Description"], color = embed_color)
+        embed.add_field(name='Usage', value=response["Hentai"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Hentai"][0]["UPerms"], value=response["Hentai"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Hentai"][0]["BPerms"], value=response["Hentai"][0]["BPerms1"], inline=True)
+        await client.say(embed = embed)
+        return
+
     if command == prefix+'prof':
         embed = discord.Embed(title = prefix +"profile / " + prefix + "prof", description = "Shows your EXP stats.", color = embed_color)
         embed.add_field(name='Usage', value="`"+ prefix +"exp` or "+prefix+"`xp`", inline=True)
@@ -711,11 +738,34 @@ async def h(command = None):
     if command == prefix+'setdescription':
         embed = discord.Embed(title = prefix +"setdesc / " + prefix + "setdescription", description = "Changes your `;sexp` description to whatever you put.\nUp to 50 characters!\nTo see how much characters your description has, do `;chrlngtcnter My cool description`.", color = embed_color)
         embed.add_field(name='Usage', value="`"+ prefix +"setdesc My cool description` or "+prefix+"`setdescription My cool description`", inline=True)
+
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
         embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
         await client.say(embed = embed)
         return
 
+    if command == prefix+'hackban':
+        embed = discord.Embed(title = response["Hackban"][0]["Title"], description = response["Hackban"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Hackban"][0]["Usage"], value=response["Hackban"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Hackban"][0]["UPerms"], value=response["Hackban"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Hackban"][0]["BPerms"], value=response["Hackban"][0]["BPerms1"], inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == prefix+'hb':
+        embed = discord.Embed(title = response["Hackban"][0]["Title"], description = response["Hackban"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Hackban"][0]["Usage"], value=response["Hackban"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Hackban"][0]["UPerms"], value=response["Hackban"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Hackban"][0]["BPerms"], value=response["Hackban"][0]["BPerms1"], inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == prefix+'serperm':
+        embed = discord.Embed(title = response["Server_Permission"][0]["Title"], description = response["Server_Permission"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["Server_Permission"][0]["Usage"], value = response["Server_Permission"][0]["Usage1"], inline = True)
+        embed.add_field(name=response["Server_Permission"][0]["UPerms"], value = response["Server_Permission"][0]["UPerms1"], inline = True)
+        embed.add_field(name=response["Server_Permission"][0]["BPerms"], value = response["Server_Permission"][0]["BPerms1"], inline = True)
+        
     if command == prefix+'bounty':
         bntydt = json.load(open('responses.json'))
         embed = discord.Embed(title = prefix + bntydt["Bounty"][0]["Title"], description = bntydt["Bounty"][0]["Description"], color = embed_color)        
@@ -781,21 +831,6 @@ async def on_message_edit(message, after, channel = loggingchannel):
     else:
 	   return
     await client.process_commands(message)
-
-
-@client.event
-async def on_message_delete(message, channel = loggingchannel):
-    if logserver == message.server.id:
-    	embed = discord.Embed(title = "Message Deleted!", description = "In channel: <#" + message.channel.id + ">", color = embed_color)
-    	embed.add_field(name="Message Content: ", value=message.content, inline=True)
-        embed.add_field(name="User: ", value=message.author.name + "#" + message.author.discriminator)
-    	embed.add_field(name="Server:", value=message.server.name, inline=False)
-    	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
-    	await client.send_message(discord.Object(id=loggingchannel), embed = embed)
-    else:
-	   return
-    await client.process_commands(message)
-
 ##### LOGGING #####
 
 
@@ -865,6 +900,15 @@ async def updatelin(ctx):
         embed = discord.Embed(description = "Updating...", color = embed_color)
         await client.say(embed = embed)
         os.startfile(updatefile)
+        await client.logout()
+
+@client.command(pass_context = True)
+async def reboot(ctx):
+    rebootf = "reboot.sh"
+    await client.say("Restarting...")
+    os.startfile(rebootf)
+    print(Fore.GREEN + "Reboot initiated")
+    await client.logout()
 
 
 ## HACKBAN ##
