@@ -21,7 +21,7 @@ from credentials import Prefix as prefix
 from credentials import LoggingChannel as loggingchannel
 from credentials import LoggingServer as logser
 ###
-bot_version = 'v0.7.1'
+bot_version = 'v1'
 bot_author = 'Kyousei#8357'
 bot_author_id = '145878866429345792'
 ###
@@ -37,6 +37,8 @@ c = conn.cursor()
 def create_table():
     c.execute('CREATE TABLE IF NOT EXISTS Hackbans(user_id TEXT, server_id TEXT)')
     c.execute('CREATE TABLE IF NOT EXISTS Permissions(nsfw_is_enabled INT, server_id TEXT)')
+    c.execute('CREATE TABLE IF NOT EXISTS UserData(user_id TEXT, user_name TEXT, level TEXT, exp TEXT, description TEXT, reputation TEXT, currency TEXT)')
+    c.execute('CREATE TABLE IF NOT EXISTS Bounties(user TEXT, username TEXT, reward TEXT)')
 
 create_table()
 
@@ -63,6 +65,8 @@ async def on_ready():
     print("Logged In | Client Credentials")
     print("\n       Client Name: {}".format(client.user.name) +"\n       Client ID: {}".format(client.user.id) + "\n       Prefix: {}".format(prefix) + "\n       Embed Color: {}".format(embed_color) + "\n       Version: {}".format(bot_version) + "\n       Owner ID: {}".format(owner))
     await client.change_presence(game=discord.Game(name=''))
+
+startup_extensions["data.Modules.Bounty.Bounties", "data.Modules.XP.EXP", "data.Modules.XP.GiXP", "data.Modules.XP.NewEXPStats"]
 
 
 @client.command(pass_context = True, no_pm = True)
@@ -677,6 +681,47 @@ async def h(command = None):
         embed.add_field(name='Usage', value=response["Hentai"][0]["Usage1"], inline=True)
         embed.add_field(name=response["Hentai"][0]["UPerms"], value=response["Hentai"][0]["UPerms1"], inline=True)
         embed.add_field(name=response["Hentai"][0]["BPerms"], value=response["Hentai"][0]["BPerms1"], inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == prefix+'prof':
+        embed = discord.Embed(title = prefix +"profile / " + prefix + "prof", description = "Shows your EXP stats.", color = embed_color)
+        embed.add_field(name='Usage', value="`"+ prefix +"exp` or "+prefix+"`xp`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == prefix+'profile':
+        embed = discord.Embed(title = prefix +"profile / " + prefix + "prof", description = "Shows your EXP stats.", color = embed_color)
+        embed.add_field(name='Usage', value="`"+ prefix +"exp` or "+prefix+"`xp`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == prefix+'setdesc':
+        embed = discord.Embed(title = prefix +"setdesc / " + prefix + "setdescription", description = "Changes your `;sexp` description to whatever you put.\nUp to 50 characters!\nTo see how much characters your description has, do `;chrlngtcnter My cool description`.", color = embed_color)
+        embed.add_field(name='Usage', value="`"+ prefix +"setdesc My cool description` or "+prefix+"`setdescription My cool description`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == prefix+'setdescription':
+        embed = discord.Embed(title = prefix +"setdesc / " + prefix + "setdescription", description = "Changes your `;sexp` description to whatever you put.\nUp to 50 characters!\nTo see how much characters your description has, do `;chrlngtcnter My cool description`.", color = embed_color)
+        embed.add_field(name='Usage', value="`"+ prefix +"setdesc My cool description` or "+prefix+"`setdescription My cool description`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == prefix+'bounty':
+        bntydt = json.load(open('responses.json'))
+        embed = discord.Embed(title = prefix + bntydt["Bounty"][0]["Title"], description = bntydt["Bounty"][0]["Description"], color = embed_color)        
+        embed.add_field(name=bntydt["Bounty"][0]["Usage"], value=bntydt["Bounty"][0]["Usage1"], inline=True)
+        embed.add_field(name=bntydt["Bounty"][0]["UPerms"], value=bntydt["Bounty"][0]["UPerms1"], inline=True)
+        embed.add_field(name=bntydt["Bounty"][0]["BPerms"], value=bntydt["Bounty"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
