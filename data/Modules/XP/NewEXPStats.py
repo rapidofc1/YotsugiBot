@@ -58,4 +58,5 @@ class NewEXPStats():
 		elif hsx[0][0] == 0:
 			mkifno(mk)
 
-    await self.client.process_commands(message)
+def setup(client):
+	client.add_cog(NewEXPStats(client))
