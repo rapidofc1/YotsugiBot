@@ -1,5 +1,3 @@
-#Do NOT edit past this point, unless you know what you're doing!#
-#---------------------------------------------------------------------------------------------------------------------#
 import discord
 import asyncio
 import random
@@ -63,7 +61,7 @@ async def on_ready():
     print("\n       Client Name: {}".format(client.user.name) +"\n       Client ID: {}".format(client.user.id) + "\n       Prefix: {}".format(prefix) + "\n       Embed Color: {}".format(embed_color) + "\n       Version: {}".format(bot_version) + "\n       Owner ID: {}".format(owner))
     await client.change_presence(game=discord.Game(name=''))
 
-startup_extensions["data.Modules.Bounty.Bounties", "data.Modules.XP.EXP", "data.Modules.XP.GiXP", "data.Modules.XP.NewEXPStats"]
+startup_extensions = ["data.Modules.Bounty.Bounties", "data.Modules.XP.EXP", "data.Modules.XP.GiXP", "data.Modules.XP.NewEXPStats"]
 
 for cog in startup_extensions:
 	try:
@@ -792,9 +790,7 @@ async def on_server_role_create(role, channel = loggingchannel):
     	embed.add_field(name="Server:", value=message.server.name, inline=False)
     	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
     	await client.send_message(discord.Object(id=loggingchannel), embed=embed)
-    else:
-	return
-    await client.process_commands(role)
+    await client.process_commands()
 
 
 @client.event
@@ -805,9 +801,7 @@ async def on_server_role_delete(role, channel = loggingchannel):
     	embed.add_field(name="Server:", value=message.server.name, inline=False)
     	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
     	await client.send_message(discord.Object(id=loggingchannel), embed=embed)
-    else:
-	return
-    await client.process_commands(role)
+    await client.process_commands()
 
 
 @client.event
@@ -819,9 +813,7 @@ async def on_member_ban(member, channel = loggingchannel):
     	embed.add_field(name="Server:", value=message.server.name, inline=False)
     	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
     	await client.send_message(discord.Object(id=loggingchannel), embed=embed)
-    else:
-	return
-    await client.process_commands(member)
+    await client.process_commands()
 
 
 @client.event
@@ -834,8 +826,6 @@ async def on_message_edit(message, after, channel = loggingchannel):
     	embed.add_field(name="Server:", value=message.server.name, inline=False)
     	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
     	await client.send_message(discord.Object(id=loggingchannel), embed = embed)
-    else:
-	return
     await client.process_commands(message)
 ##### LOGGING #####
 
