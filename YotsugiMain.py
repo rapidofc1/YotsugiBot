@@ -805,9 +805,7 @@ async def on_server_role_delete(role, channel = loggingchannel):
     	embed.add_field(name="Server:", value=message.server.name, inline=False)
     	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
     	await client.send_message(discord.Object(id=loggingchannel), embed=embed)
-    else:
-	pass
-    await client.process_commands(role)
+    await client.process_commands()
 
 
 @client.event
@@ -819,9 +817,7 @@ async def on_member_ban(member, channel = loggingchannel):
     	embed.add_field(name="Server:", value=message.server.name, inline=False)
     	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
     	await client.send_message(discord.Object(id=loggingchannel), embed=embed)
-    else:
-	pass
-    await client.process_commands(member)
+    await client.process_commands()
 
 
 @client.event
@@ -834,8 +830,6 @@ async def on_message_edit(message, after, channel = loggingchannel):
     	embed.add_field(name="Server:", value=message.server.name, inline=False)
     	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
     	await client.send_message(discord.Object(id=loggingchannel), embed = embed)
-    else:
-	pass
     await client.process_commands(message)
 ##### LOGGING #####
 
