@@ -1,5 +1,3 @@
-#Do NOT edit past this point, unless you know what you're doing!#
-#---------------------------------------------------------------------------------------------------------------------#
 import discord
 import asyncio
 import random
@@ -792,9 +790,7 @@ async def on_server_role_create(role, channel = loggingchannel):
     	embed.add_field(name="Server:", value=message.server.name, inline=False)
     	embed.add_field(name="Server ID:", value=message.server.id, inline=False)
     	await client.send_message(discord.Object(id=loggingchannel), embed=embed)
-    else:
-	pass
-    await client.process_commands(role)
+    await client.process_commands()
 
 
 @client.event
