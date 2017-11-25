@@ -18,8 +18,9 @@ class GiXP():
 
 
     async def on_message(self, message):
-        def givexp(givxp):
-            c.execute(givxp)
+        
+        def givexp(givexpstr):
+            c.execute(givexpstr)
             conn.commit()
 
         def getcrntxp(getcrnt):
@@ -28,42 +29,48 @@ class GiXP():
             global crntxp
             crntxp = c.fetchall()
 
-        def getcrntlvl(gclvl):
-            c.execute(gclvl)
-            conn.commit()
-            global crntlvl
-            crntlvl = c.fetchall()
-
-        def levelup(lvl):
-            c.execute(lvl)
+        def levelup(levelupstr):
+            c.execute(levelupstr)
             conn.commit()
 
-        def resetxp(rxp):
-            c.execute(rxp)
+        def resetxp(resetxpstr):
+            c.execute(resetxpstr)
             conn.commit()
 
+        def hasxp(hsxp):
+            c.execute(hsxp)
+            conn.commit()
+            global xpdata
+            xpdata = c.fetchall()
 
-        getcrnt = "SELECT exp FROM UserData WHERE user_id = '" + message.author.id + "'"
-        getcrntxp(getcrnt)
-        if int(crntxp[0][0]) is 100:
-            gclvl = "SELECT level FROM UserData WHERE user_id = '"  + message.author.id + "'"
-            getcrntlvl(gclvl)
-            zero = "0"
-            lvlup = str(int(crntlvl[0][0]) + 1)
-            lvl = "UPDATE UserData SET level = '" + lvlup + "' WHERE user_id = '" + message.author.id + "'"
-            rxp = "UPDATE UserData SET exp = '" + zero + "' WHERE user_id = '" + message.author.id + "'"
-            levelup(lvl)
-            resetxp(rxp)
-            print(str(message.author) + " leveled up! They are now: " + str(lvlup) + "!")
-            embed = discord.Embed(description = message.author.mention + " you are now level `" + str(lvlup) + "`!\nCheck your XP with `" + prefix + "prof " + message.author.name + "`!", color = embed_color)
-            await self.client.send_message(message.channel, embed = embed)
-        else:
-            await asyncio.sleep(600)
-            wtfxp = crntxp[0][0]
-            nrexp= int(wtfxp) + 1
-            givxp = "UPDATE UserData SET exp = '" + str(nrexp) + "' WHERE user_id = '" + message.author.id + "'"
-            givexp(givxp)
-            print("Awarded XP to " + str(message.author) + "!")
+        def allxpstats(asxp):
+            c.execute(asxp)
+            conn.commit()
+            global xpstats
+            xpstats = c.fetchall()
+
+
+        hsxp = "SELECT COUNT(*) FROM UserData WHERE user_id = '" + message.author.id + "'"
+        hasxp(hsxp)
+        if xpdata[0][0] > 0:
+            asxp = "SELECT * FROM UserData WHERE user_name = '" + message.author.name + "'"
+            allxpstats(asxp)
+            if int(xpstats[0][3]) == 100:
+                lvlup = int(xpstats[0][2]) + 1
+                levelupstr = "UPDATE UserData SET level = '" + str(lvlup) + "' WHERE user_name = '" + message.author.name + "'"
+                levelup(levelupstr)
+                resetxpstr = "UPDATE UserData SET exp = '" + "0" + "' WHERE user_name = '" + message.author.name + "'"
+                resetxp(resetxpstr)
+                embed = discord.Embed(description = message.author.mention + " you are now level " + str(lvlup) + "!", color = embed_color)
+                await self.client.send_message(message.channel, embed = embed)
+            elif int(xpstats[0][3]) != 100:
+                newxp = int(xpstats[0][3]) + 2
+                givexpstr = "UPDATE UserData SET exp = '" + str(newxp) + "' WHERE user_name = '" + message.author.name + "'"
+                await asyncio.sleep(2)
+                givexp(givexpstr)
+                print("Awarded 2 EXP to " + message.author.name + "!")
+        elif xpdata[0][0] < 1:
+            print("This user does not have EXP stats!")
 
 def setup(client):
     client.add_cog(GiXP(client))
