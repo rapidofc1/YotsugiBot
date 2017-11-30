@@ -5,12 +5,14 @@ from credentials import EmbedColor as embed_color
 import sqlite3
 import asyncio
 
+conn = sqlite3.connect('YotsugiBot.db')
+c = conn.cursor(0)
 
 class NewEXPStats():
 	def __init__(self, client):
 		self.client = client
-	
-	async def on_message(message):
+
+	async def on_message(self, message):
 		def mkifno(mk):
 			c.execute(mk)
 			conn.commit()

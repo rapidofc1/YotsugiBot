@@ -53,19 +53,19 @@ class GiXP():
         hsxp = "SELECT COUNT(*) FROM UserData WHERE user_id = '" + message.author.id + "'"
         hasxp(hsxp)
         if xpdata[0][0] > 0:
-            asxp = "SELECT * FROM UserData WHERE user_name = '" + message.author.name + "'"
+            asxp = "SELECT * FROM UserData WHERE user_id = '" + message.author.id + "'"
             allxpstats(asxp)
             if int(xpstats[0][3]) == 100:
                 lvlup = int(xpstats[0][2]) + 1
-                levelupstr = "UPDATE UserData SET level = '" + str(lvlup) + "' WHERE user_name = '" + message.author.name + "'"
+                levelupstr = "UPDATE UserData SET level = '" + str(lvlup) + "' WHERE user_id = '" + message.author.id + "'"
                 levelup(levelupstr)
-                resetxpstr = "UPDATE UserData SET exp = '" + "0" + "' WHERE user_name = '" + message.author.name + "'"
+                resetxpstr = "UPDATE UserData SET exp = '" + "0" + "' WHERE user_id = '" + message.author.id + "'"
                 resetxp(resetxpstr)
                 embed = discord.Embed(description = message.author.mention + " you are now level " + str(lvlup) + "!", color = embed_color)
                 await self.client.send_message(message.channel, embed = embed)
             elif int(xpstats[0][3]) != 100:
                 newxp = int(xpstats[0][3]) + 2
-                givexpstr = "UPDATE UserData SET exp = '" + str(newxp) + "' WHERE user_name = '" + message.author.name + "'"
+                givexpstr = "UPDATE UserData SET exp = '" + str(newxp) + "' WHERE user_id = '" + message.author.id + "'"
                 await asyncio.sleep(2)
                 givexp(givexpstr)
                 print("Awarded 2 EXP to " + message.author.name + "!")
