@@ -6,6 +6,7 @@ from credentials import Owners as owner
 import asyncio
 import time
 import datetime
+
 conn = sqlite3.connect('YotsugiBot.db')
 c = conn.cursor()
 
@@ -16,7 +17,7 @@ class EXP():
         self.client = client
 
     @commands.command(pass_context =  True, aliases=['prof'])
-    async def profile(self, ctx, *, user: str):
+    async def profile(self, ctx, *, user: discord.Member):
         def profs(getxps):
             c.execute(getxps)
             conn.commit()
@@ -42,7 +43,7 @@ class EXP():
         profs(getxps)
         if data[0][0] < 1:
             selfprofs(getselfprof)
-            embed = discord.Embed(title = ctx.message.author.name+"'s EXP stats", description = "*I did not find `" + user +"`'s EXP stats. Therefore, I will show yours instead! :smile:*", color = embed_color)
+            embed = discord.Embed(title = ctx.message.author.name+"'s EXP stats", description = "I did not find " + str(user) + "'s EXP stats.\nI will show yours instead.", color = embed_color)
             embed.add_field(name = "User ID", value=selfdata[0][1], inline=False)
             embed.add_field(name = "User Name", value=selfdata[0][2], inline=False)
             embed.add_field(name="Level", value=selfdata[0][3], inline=True)

@@ -1,76 +1,64 @@
 import discord
 from discord.ext import commands
-import sqlite3
-import os
-import json
-import aiohttp
-import asyncio
-from credentials import EmbedColor as embed_color
 from credentials import Owners as owner
-from credentials import Prefix as prefix
+from credentials import EmbedColor as embed_color
+import sqlite3
+import asyncio
 
 conn = sqlite3.connect('YotsugiBot.db')
 c = conn.cursor()
 
-class GiXP():
+class NewEXPStats():
     def __init__(self, client):
         self.client = client
 
-
     async def on_message(self, message):
-        
-        def givexp(givexpstr):
-            c.execute(givexpstr)
+        def mkifno(mk):
+            c.execute(mk)
             conn.commit()
 
-        def getcrntxp(getcrnt):
-            c.execute(getcrnt)
+        def hsxpstts(xpsts):
+            c.execute(xpsts)
             conn.commit()
-            global crntxp
-            crntxp = c.fetchall()
+            global hsx
+            hsx = c.fetchall()
 
-        def levelup(levelupstr):
-            c.execute(levelupstr)
+        def changedname(namechn):
+            c.execute(namechn)
+            conn.commit()
+            global namechanged
+            namechanged = c.fetchall()
+
+        def idcheck(checkid):
+            c.execute(checkid)
+            conn.commit()
+            global checkedid
+            checkedid = c.fetchall()
+
+        def updatename(nameupdate):
+            c.excute(nameupdate)
             conn.commit()
 
-        def resetxp(resetxpstr):
-            c.execute(resetxpstr)
-            conn.commit()
-
-        def hasxp(hsxp):
-            c.execute(hsxp)
-            conn.commit()
-            global xpdata
-            xpdata = c.fetchall()
-
-        def allxpstats(asxp):
-            c.execute(asxp)
-            conn.commit()
-            global xpstats
-            xpstats = c.fetchall()
-
-
-        hsxp = "SELECT COUNT(*) FROM UserData WHERE user_id = '" + message.author.id + "'"
-        hasxp(hsxp)
-        if xpdata[0][0] > 0:
-            asxp = "SELECT * FROM UserData WHERE user_name = '" + message.author.name + "'"
-            allxpstats(asxp)
-            if int(xpstats[0][3]) == 100:
-                lvlup = int(xpstats[0][2]) + 1
-                levelupstr = "UPDATE UserData SET level = '" + str(lvlup) + "' WHERE user_name = '" + message.author.name + "'"
-                levelup(levelupstr)
-                resetxpstr = "UPDATE UserData SET exp = '" + "0" + "' WHERE user_name = '" + message.author.name + "'"
-                resetxp(resetxpstr)
-                embed = discord.Embed(description = message.author.mention + " you are now level " + str(lvlup) + "!", color = embed_color)
-                await self.client.send_message(message.channel, embed = embed)
-            elif int(xpstats[0][3]) != 100:
-                newxp = int(xpstats[0][3]) + 2
-                givexpstr = "UPDATE UserData SET exp = '" + str(newxp) + "' WHERE user_name = '" + message.author.name + "'"
-                await asyncio.sleep(2)
-                givexp(givexpstr)
-                print("Awarded 2 EXP to " + message.author.name + "!")
-        elif xpdata[0][0] < 1:
-            print("This user does not have EXP stats!")
+        user_id = message.author.id
+        user_name = message.author.name
+        level = "0"
+        description = "A very empty description :^)"
+        reputation = "0"
+        currency = "100"
+        exp = "0"
+        xpsts = "SELECT COUNT(*) FROM UserData WHERE user_id = '" + message.author.id + "'"
+        namechn = "SELECT user_name FROM UserData WHERE user_id = '" + message.author.id + "'"
+        checkid = "SELECT user_id FROM UserData WHERE user_id = '" + message.author.id + "'"
+        mk = "INSERT INTO UserData (user_id, user_name, level, exp, description, reputation, currency) VALUES ('" + user_id + "', '" + user_name + "', '" + level + "', '" + exp + "', '" + description + "', '" + reputation + "', '" + currency + "')"
+        hsxpstts(xpsts)
+        if hsx[0][0] != 0:
+            changedname(namechn)
+            idcheck(checkid)
+            if namechanged[0][0] != message.author.name and message.author.name == checkedid[0][0]:
+                nameupdate = "UPDATE UserData SET user_name = '" + message.author.name + "'"
+                updatename(nameupdate)
+        elif hsx[0][0] == 0:
+            mkifno(mk)
 
 def setup(client):
-    client.add_cog(GiXP(client))
+    client.add_cog(NewEXPStats(client))
