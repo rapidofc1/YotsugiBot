@@ -17,7 +17,7 @@ class EXP():
         self.client = client
 
     @commands.command(pass_context =  True, aliases=['prof'])
-    async def profile(self, ctx, *, user: discord.Member):
+    async def profile(self, ctx, *, user: str):
         def profs(getxps):
             c.execute(getxps)
             conn.commit()
