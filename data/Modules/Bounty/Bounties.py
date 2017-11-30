@@ -105,9 +105,12 @@ class Bount:
 
 	@bounty.command(pass_context = True)
 	async def catch(self, ctx, user: str, cash: int):
+
+
 		def catchuser(catch):
 		    c.execute(catch)
 		    conn.commit()
+
 
 		def userhasbnty(hasbnty):
 		    c.execute(hasbnty)
@@ -115,31 +118,46 @@ class Bount:
 		    global hasbnt
 		    hasbnt = c.fetchall()
 
+
 		def hscsh(hascash):
 		    c.execute(hascash)
 		    conn.commit()
 		    global bntycash
 		    bntycash = c.fetchall()
 
+
 		def rmvcur(rmv):
 		    c.execute(rmv)
 		    conn.commit()
+		    
+
+		def rem_cur_if_too_much(rcitm):
+			c.execute(rcitm)
+			conn.commit()
 		
-		catch = "DELETE FROM Bounties WHERE user = '" + user + "'"
+
+		catch = "DELETE FROM Bounties WHERE user = '" + user + "' AND reward = '" + str(cash) + "'"
 		hasbnty = "SELECT * FROM Bounties WHERE user = '" + user + "'"
 		hascash = "SELECT * FROM UserData WHERE user_id = '" + ctx.message.author.id + "'"
 		hscsh(hascash)
+
+
 		alltgt = int(bntycash[0][6]) - cash
 		rmv = "UPDATE UserData SET currency = '" + str(alltgt) + "' WHERE user_id = '" + ctx.message.author.id + "'"
 		userhasbnty(hasbnty)
+
+
 		if hasbnt[0][0] == 0:
-			embed = discord.Embed(description = "There's no one named `" + user + "` to capture!", color = 0xFF0000)
+			embed = discord.Embed(description = user + " does not have a bounty!", color = 0xFF0000)
 			await self.client.say(embed = embed)
 		elif hasbnt[0][0] != 0:
 			catchuser(catch)
 			rmvcur(rmv)
-			embed = discord.Embed(description = "You successfully captured `" + user + "` for their bounty of `" + hasbnt[0][2] + "`!", color = embed_color)
+			embed = discord.Embed(description = "You successfully captured **" + user + "** for their bounty of " + hasbnt[0][2] + "$!", color = embed_color)
 			await self.client.say(embed = embed)
+
+
+
 
 def setup(client):
 	client.add_cog(Bount(client))
