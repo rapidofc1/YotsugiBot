@@ -6,7 +6,7 @@ import sqlite3
 import asyncio
 
 conn = sqlite3.connect('YotsugiBot.db')
-c = conn.cursor(0)
+c = conn.cursor()
 
 class NewEXPStats():
 	def __init__(self, client):
