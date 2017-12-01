@@ -375,5 +375,31 @@
             "BPerms": "Bot Permissions",
             "BPerms1": "`None`"
         }
+    ],
+
+    "SetDesc": [
+    	{
+    		"Title": "setdesc / setdescription",
+    		"Description": "Changes your `prof` description to whatever you put. Up to 100 characters!\nTo see how much characters your description has, use `;chrlngtcnter`.",
+    		"Usage": "Usage",
+    		"Usage1": "`setdesc My cool description!` or `setdescription My cool description!`",
+    		"UPerms": "User Permissions",
+    		"UPerms1": "`None`",
+    		"BPerms": "Bot Permissions",
+    		"BPerms1": "`None`"
+    	}
+    ],
+
+    "Profile": [
+    	{
+    		"Title": "prof / profile",
+    		"Description": "Shows your EXP profile.",
+    		"Usage": "Usage",
+    		"Usage1": "`prof Someone` or `profile Someone`",
+    		"UPerms": "User Permissions",
+    		"UPerms1": "`None`",
+    		"BPerms": "Bot Permissions",
+    		"BPerms1": "`None`"
+    	}
     ]
 }

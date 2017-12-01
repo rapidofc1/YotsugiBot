@@ -723,35 +723,34 @@ async def h(command = None):
         return
 
     if command == prefix+'prof':
-        embed = discord.Embed(title = prefix +"profile / " + prefix + "prof", description = "Shows your EXP stats.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"exp` or "+prefix+"`xp`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["Profile"][0]["Title"], description = response["Profile"][0]["Title"], color = embed_color)
+        embed.add_field(name=response["Profile"][0]["Title"], value=response["Profile"][0]["Title"], inline=True)
+        embed.add_field(name=response["Profile"][0]["Title"], value=response["Profile"][0]["Title"], inline=True)
+        embed.add_field(name=response["Profile"][0]["Title"], value=response["Profile"][0]["Title"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'profile':
-        embed = discord.Embed(title = prefix +"profile / " + prefix + "prof", description = "Shows your EXP stats.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"exp` or "+prefix+"`xp`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["Profile"][0]["Title"], description = response["Profile"][0]["Title"], color = embed_color)
+        embed.add_field(name=response["Profile"][0]["Title"], value=response["Profile"][0]["Title"], inline=True)
+        embed.add_field(name=response["Profile"][0]["Title"], value=response["Profile"][0]["Title"], inline=True)
+        embed.add_field(name=response["Profile"][0]["Title"], value=response["Profile"][0]["Title"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'setdesc':
-        embed = discord.Embed(title = prefix +"setdesc / " + prefix + "setdescription", description = "Changes your `;sexp` description to whatever you put.\nUp to 50 characters!\nTo see how much characters your description has, do `;chrlngtcnter My cool description`.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"setdesc My cool description` or "+prefix+"`setdescription My cool description`", inline=True)
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["SetDesc"][0]["Title"], description = response["SetDesc"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["SetDesc"][0]["Usage"], value=response["SetDesc"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["SetDesc"][0]["UPerms"], value=response["SetDesc"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["SetDesc"][0]["BPerms"], value=response["SetDesc"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
     if command == prefix+'setdescription':
-        embed = discord.Embed(title = prefix +"setdesc / " + prefix + "setdescription", description = "Changes your `;sexp` description to whatever you put.\nUp to 50 characters!\nTo see how much characters your description has, do `;chrlngtcnter My cool description`.", color = embed_color)
-        embed.add_field(name='Usage', value="`"+ prefix +"setdesc My cool description` or "+prefix+"`setdescription My cool description`", inline=True)
-
-        embed.add_field(name='User Permissions:', value='`None`', inline=True)
-        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        embed = discord.Embed(title = response["SetDesc"][0]["Title"], description = response["SetDesc"][0]["Description"], color = embed_color)
+        embed.add_field(name=response["SetDesc"][0]["Usage"], value=response["SetDesc"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["SetDesc"][0]["UPerms"], value=response["SetDesc"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["SetDesc"][0]["BPerms"], value=response["SetDesc"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
@@ -778,11 +777,10 @@ async def h(command = None):
         embed.add_field(name=response["Server_Permission"][0]["BPerms"], value = response["Server_Permission"][0]["BPerms1"], inline = True)
         
     if command == prefix+'bounty':
-        bntydt = json.load(open('responses.json'))
-        embed = discord.Embed(title = prefix + bntydt["Bounty"][0]["Title"], description = bntydt["Bounty"][0]["Description"], color = embed_color)        
-        embed.add_field(name=bntydt["Bounty"][0]["Usage"], value=bntydt["Bounty"][0]["Usage1"], inline=True)
-        embed.add_field(name=bntydt["Bounty"][0]["UPerms"], value=bntydt["Bounty"][0]["UPerms1"], inline=True)
-        embed.add_field(name=bntydt["Bounty"][0]["BPerms"], value=bntydt["Bounty"][0]["BPerms1"], inline=True)
+        embed = discord.Embed(title = response["Bounty"][0]["Title"], description = response["Bounty"][0]["Description"], color = embed_color)        
+        embed.add_field(name=response["Bounty"][0]["Usage"], value=response["Bounty"][0]["Usage1"], inline=True)
+        embed.add_field(name=response["Bounty"][0]["UPerms"], value=response["Bounty"][0]["UPerms1"], inline=True)
+        embed.add_field(name=response["Bounty"][0]["BPerms"], value=response["Bounty"][0]["BPerms1"], inline=True)
         await client.say(embed = embed)
         return
 
