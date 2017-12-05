@@ -59,7 +59,7 @@ class GiXP():
                 lvlup = int(xpstats[0][2]) + 1
                 levelupstr = "UPDATE UserData SET level = '" + str(lvlup) + "' WHERE user_id = '" + message.author.id + "'"
                 levelup(levelupstr)
-                resetxpstr = "UPDATE UserData SET exp = '" + "0" + "' WHERE user_id = '" + message.author.id + "'"
+                resetxpstr = "UPDATE UserData SET exp = '" + "1" + "' WHERE user_id = '" + message.author.id + "'"
                 resetxp(resetxpstr)
                 embed = discord.Embed(description = message.author.mention + " you are now level " + str(lvlup) + "!", color = embed_color)
                 await self.client.send_message(message.channel, embed = embed)
