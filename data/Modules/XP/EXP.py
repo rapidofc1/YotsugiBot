@@ -16,7 +16,7 @@ class EXP():
     def __init__(self, client):
         self.client = client
 
-    @commands.command(pass_context =  True, aliases=['prof'])
+    @commands.command(pass_context =  True, aliases=['prof'], no_pm = True)
     async def profile(self, ctx, *, user: str):
         def profs(getxps):
             c.execute(getxps)
