@@ -922,10 +922,14 @@ def data_entry(hkban):
 @client.command(pass_context = True, aliases=['hb'])
 async def hackban(ctx, *, id: str):
     server_id = ctx.message.server.id
-    hkban = "INSERT INTO Hackbans (user_id, server_id) VALUES ('" + id + "', '" + server_id + "')"
-    data_entry(hkban)
-    embed = discord.Embed(description = "Successfully Hackbanned: " + id, color = embed_color)
-    await client.say("Hackbanned: " + id)
+    if ctx.message.author.server_permissions.administrator:
+        hkban = "INSERT INTO Hackbans (user_id, server_id) VALUES ('" + id + "', '" + server_id + "')"
+        data_entry(hkban)
+        embed = discord.Embed(description = "Successfully Hackbanned: " + id, color = embed_color)
+        await client.say(embed = embed)
+    else:
+	embed = discord.Embed(description = "You don't have permission to do this!", color = 0xFF0000)
+	await client.say(embed = embed)
 
 
 def read_from_db(banonjoin):
